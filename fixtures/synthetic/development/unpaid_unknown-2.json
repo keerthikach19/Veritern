@@ -1,0 +1,85 @@
+{
+  "provenance": "Author-created synthetic ground truth; not real evidence",
+  "family": "unpaid_unknown",
+  "expected_rules": [
+    "PAY03"
+  ],
+  "case": {
+    "id": "e69dd75a-03f4-41af-a008-8afd51b83f6e",
+    "owner": "fictional-evaluation",
+    "original_input": "Fictional unpaid_unknown",
+    "entity": {
+      "id": "dab0ef16-5735-488e-b67d-a94413bd7556",
+      "name": "Fictional unpaid_unknown 1",
+      "domain": "unpaid-unknown-1.test",
+      "role": "unverified provider",
+      "match_state": "user_selected_scope"
+    },
+    "program": {
+      "id": "d54ffcca-8a72-45a9-9580-f8eb7c90844d",
+      "title": "Web Development Internship",
+      "batch": "October 2026",
+      "country": null,
+      "discipline": null
+    },
+    "mode": "demo",
+    "created_at": "2026-10-10T07:21:15.076226Z",
+    "updated_at": "2026-10-10T07:21:15.076233Z",
+    "revision": 0,
+    "saved": false,
+    "extraction_fingerprint": null,
+    "sources": [
+      {
+        "id": "4f78f3c8-810a-4d04-92a4-bedf50749c1c",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional unpaid_unknown 1",
+        "text": "I report that the agreed stipend was not received by 2026-09-01.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.076314Z",
+        "published_at": null,
+        "event_date": null,
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      }
+    ],
+    "spans": [
+      {
+        "id": "20addb08-801b-4dfa-a491-883164bafc74",
+        "source_id": "4f78f3c8-810a-4d04-92a4-bedf50749c1c",
+        "quote": "I report that the agreed stipend was not received by 2026-09-01.",
+        "locator": "paragraph 1",
+        "verified": true
+      }
+    ],
+    "claims": [
+      {
+        "id": "ab1bba13-fbcf-4564-9e9e-b12d09fee232",
+        "kind": "reported_unpaid",
+        "span_ids": [
+          "20addb08-801b-4dfa-a491-883164bafc74"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": null,
+        "due_date": null,
+        "amount_minor": null,
+        "currency": null,
+        "mandatory": null,
+        "disclosed_before_joining": null,
+        "condition": null,
+        "benefit": null,
+        "attribution": "participant_reported",
+        "verification": "unverified"
+      }
+    ],
+    "assessments": []
+  }
+}

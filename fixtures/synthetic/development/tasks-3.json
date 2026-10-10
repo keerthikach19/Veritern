@@ -1,0 +1,85 @@
+{
+  "provenance": "Author-created synthetic ground truth; not real evidence",
+  "family": "tasks",
+  "expected_rules": [
+    "EXP01"
+  ],
+  "case": {
+    "id": "dc774069-2be8-4543-962b-23e82c8008f8",
+    "owner": "fictional-evaluation",
+    "original_input": "Fictional tasks",
+    "entity": {
+      "id": "bf04689c-c13a-4d28-9132-16dadf17851a",
+      "name": "Fictional tasks 2",
+      "domain": "tasks-2.test",
+      "role": "unverified provider",
+      "match_state": "user_selected_scope"
+    },
+    "program": {
+      "id": "c867f7bf-527b-42cb-8d54-41ae38bc5792",
+      "title": "Web Development Internship",
+      "batch": "October 2026",
+      "country": null,
+      "discipline": null
+    },
+    "mode": "demo",
+    "created_at": "2026-10-10T07:21:15.030509Z",
+    "updated_at": "2026-10-10T07:21:15.030519Z",
+    "revision": 0,
+    "saved": false,
+    "extraction_fingerprint": null,
+    "sources": [
+      {
+        "id": "6bf667ea-c42a-4876-a830-b7530fa3a9f1",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional tasks 2",
+        "text": "Case variant 3. Every learner receives the same dashboard task sheet.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.030628Z",
+        "published_at": null,
+        "event_date": null,
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      }
+    ],
+    "spans": [
+      {
+        "id": "8d1c1384-0ebb-47b6-8071-2c346e2e7950",
+        "source_id": "6bf667ea-c42a-4876-a830-b7530fa3a9f1",
+        "quote": "Case variant 3. Every learner receives the same dashboard task sheet.",
+        "locator": "paragraph 1",
+        "verified": true
+      }
+    ],
+    "claims": [
+      {
+        "id": "23ac1222-d8a1-4e0a-8fdc-2bbc479896c1",
+        "kind": "standardized_tasks",
+        "span_ids": [
+          "8d1c1384-0ebb-47b6-8071-2c346e2e7950"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": null,
+        "due_date": null,
+        "amount_minor": null,
+        "currency": null,
+        "mandatory": null,
+        "disclosed_before_joining": null,
+        "condition": null,
+        "benefit": null,
+        "attribution": "advertised",
+        "verification": "unverified"
+      }
+    ],
+    "assessments": []
+  }
+}

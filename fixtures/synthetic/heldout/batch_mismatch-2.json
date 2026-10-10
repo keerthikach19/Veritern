@@ -1,0 +1,131 @@
+{
+  "provenance": "Author-created synthetic ground truth; not real evidence",
+  "family": "batch_mismatch",
+  "expected_rules": [
+    "FEE02"
+  ],
+  "case": {
+    "id": "58f3d5e0-6ee4-440f-9952-66246a0a4477",
+    "owner": "fictional-evaluation",
+    "original_input": "Fictional batch_mismatch",
+    "entity": {
+      "id": "8248e796-c064-4a0a-a23f-b3c83697de00",
+      "name": "Fictional batch_mismatch 1",
+      "domain": "batch-mismatch-1.test",
+      "role": "unverified provider",
+      "match_state": "user_selected_scope"
+    },
+    "program": {
+      "id": "6979afe4-7902-461f-a25a-023c19eb95af",
+      "title": "Web Development Internship",
+      "batch": "October 2026",
+      "country": null,
+      "discipline": null
+    },
+    "mode": "demo",
+    "created_at": "2026-10-10T07:21:15.246581Z",
+    "updated_at": "2026-10-10T07:21:15.246591Z",
+    "revision": 0,
+    "saved": false,
+    "extraction_fingerprint": null,
+    "sources": [
+      {
+        "id": "c4c08e3c-7e9d-4990-b1df-f5ccefb7b698",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional batch_mismatch 1",
+        "text": "October 2026 advertisement dated 2026-10-01: every graduate receives a free certificate.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.246811Z",
+        "published_at": null,
+        "event_date": "2026-10-01",
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      },
+      {
+        "id": "ef3140e1-9775-4f79-936f-f09573553379",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional batch_mismatch 1",
+        "text": "October 2026 message dated 2026-10-09: you must pay INR 125 to release the certificate.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.248374Z",
+        "published_at": null,
+        "event_date": "2026-10-09",
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      }
+    ],
+    "spans": [
+      {
+        "id": "0bf55869-a0c8-42fa-870b-79e008c527d0",
+        "source_id": "c4c08e3c-7e9d-4990-b1df-f5ccefb7b698",
+        "quote": "October 2026 advertisement dated 2026-10-01: every graduate receives a free certificate.",
+        "locator": "paragraph 1",
+        "verified": true
+      },
+      {
+        "id": "533addf8-ef38-4e06-bc0d-e1f9b4e9a04b",
+        "source_id": "ef3140e1-9775-4f79-936f-f09573553379",
+        "quote": "October 2026 message dated 2026-10-09: you must pay INR 125 to release the certificate.",
+        "locator": "paragraph 1",
+        "verified": true
+      }
+    ],
+    "claims": [
+      {
+        "id": "d7058daf-1e21-4eeb-877a-960efaf849ea",
+        "kind": "no_fee_promise",
+        "span_ids": [
+          "0bf55869-a0c8-42fa-870b-79e008c527d0"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": "2026-10-01",
+        "due_date": null,
+        "amount_minor": null,
+        "currency": null,
+        "mandatory": null,
+        "disclosed_before_joining": null,
+        "condition": null,
+        "benefit": "certificate",
+        "attribution": "advertised",
+        "verification": "unverified"
+      },
+      {
+        "id": "1ffbc297-95ba-491a-b6d5-7fac426f5d57",
+        "kind": "fee_request",
+        "span_ids": [
+          "533addf8-ef38-4e06-bc0d-e1f9b4e9a04b"
+        ],
+        "program": "Web Development Internship",
+        "batch": "September 2025",
+        "event_date": "2026-10-09",
+        "due_date": null,
+        "amount_minor": 12500,
+        "currency": "INR",
+        "mandatory": true,
+        "disclosed_before_joining": null,
+        "condition": null,
+        "benefit": "certificate",
+        "attribution": "participant_reported",
+        "verification": "unverified"
+      }
+    ],
+    "assessments": []
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "provenance": "Author-created synthetic ground truth; not real evidence",
+  "family": "conditional",
+  "expected_rules": [
+    "PAY00"
+  ],
+  "case": {
+    "id": "f05f3db0-e3eb-40c7-aa5a-de9d11a66d87",
+    "owner": "fictional-evaluation",
+    "original_input": "Fictional conditional",
+    "entity": {
+      "id": "0c89cb82-1a1f-4cdd-84b1-659c421110c8",
+      "name": "Fictional conditional 0",
+      "domain": "conditional-0.test",
+      "role": "unverified provider",
+      "match_state": "user_selected_scope"
+    },
+    "program": {
+      "id": "3b4019b9-7f3f-49a7-99dc-b8a04ce28b44",
+      "title": "Web Development Internship",
+      "batch": "October 2026",
+      "country": null,
+      "discipline": null
+    },
+    "mode": "demo",
+    "created_at": "2026-10-10T07:21:15.034400Z",
+    "updated_at": "2026-10-10T07:21:15.034407Z",
+    "revision": 0,
+    "saved": false,
+    "extraction_fingerprint": null,
+    "sources": [
+      {
+        "id": "e24b159b-3dae-4106-b76e-cd26be19157f",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional conditional 0",
+        "text": "Case variant 1. Earn up to INR 15000 after meeting the disclosed sales target.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.034508Z",
+        "published_at": null,
+        "event_date": null,
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      }
+    ],
+    "spans": [
+      {
+        "id": "1097a761-9446-4c88-953d-05a5df48fbed",
+        "source_id": "e24b159b-3dae-4106-b76e-cd26be19157f",
+        "quote": "Case variant 1. Earn up to INR 15000 after meeting the disclosed sales target.",
+        "locator": "paragraph 1",
+        "verified": true
+      }
+    ],
+    "claims": [
+      {
+        "id": "cd734c63-431a-4908-b86a-26cfb33aa3f4",
+        "kind": "conditional_stipend",
+        "span_ids": [
+          "1097a761-9446-4c88-953d-05a5df48fbed"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": null,
+        "due_date": null,
+        "amount_minor": null,
+        "currency": null,
+        "mandatory": null,
+        "disclosed_before_joining": null,
+        "condition": null,
+        "benefit": null,
+        "attribution": "advertised",
+        "verification": "unverified"
+      }
+    ],
+    "assessments": []
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "provenance": "Author-created synthetic ground truth; not real evidence",
+  "family": "missing_terms",
+  "expected_rules": [
+    "FEE02"
+  ],
+  "case": {
+    "id": "c654596c-c716-4184-a301-73b0331db52d",
+    "owner": "fictional-evaluation",
+    "original_input": "Fictional missing_terms",
+    "entity": {
+      "id": "ac7714c2-ae03-4d72-8492-43fc1d0421da",
+      "name": "Fictional missing_terms 2",
+      "domain": "missing-terms-2.test",
+      "role": "unverified provider",
+      "match_state": "user_selected_scope"
+    },
+    "program": {
+      "id": "6475d6cc-9508-40c1-8c53-e5615c942a05",
+      "title": "Web Development Internship",
+      "batch": "October 2026",
+      "country": null,
+      "discipline": null
+    },
+    "mode": "demo",
+    "created_at": "2026-10-10T07:21:15.020027Z",
+    "updated_at": "2026-10-10T07:21:15.020035Z",
+    "revision": 0,
+    "saved": false,
+    "extraction_fingerprint": null,
+    "sources": [
+      {
+        "id": "5d21fdf5-84be-43bf-976f-c62b641fa010",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional missing_terms 2",
+        "text": "I received an INR 999 request after completion. My joining terms are unavailable.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.020127Z",
+        "published_at": null,
+        "event_date": null,
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      }
+    ],
+    "spans": [
+      {
+        "id": "09ca375e-e161-41c1-9442-c9e3300285f9",
+        "source_id": "5d21fdf5-84be-43bf-976f-c62b641fa010",
+        "quote": "I received an INR 999 request after completion. My joining terms are unavailable.",
+        "locator": "paragraph 1",
+        "verified": true
+      }
+    ],
+    "claims": [
+      {
+        "id": "db4a6076-1d96-40da-b7e6-51ce06088a2d",
+        "kind": "fee_request",
+        "span_ids": [
+          "09ca375e-e161-41c1-9442-c9e3300285f9"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": null,
+        "due_date": null,
+        "amount_minor": 99900,
+        "currency": "INR",
+        "mandatory": null,
+        "disclosed_before_joining": null,
+        "condition": null,
+        "benefit": null,
+        "attribution": "participant_reported",
+        "verification": "unverified"
+      }
+    ],
+    "assessments": []
+  }
+}

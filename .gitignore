@@ -1,0 +1,16 @@
+.env
+.venv/
+.venv-local/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+private_data/
+*.sqlite*
+*.db*
+.streamlit/secrets.toml
+uploads/
+logs/
+dist/
+*.egg-info/
+deploy/searxng/settings.yml

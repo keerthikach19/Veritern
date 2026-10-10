@@ -1,0 +1,4 @@
+version: 1
+policy: No company authority registry has been independently reviewed. Empty means unknown.
+sources: []
+# Future entries require canonical_url, publisher, claim_scope, reviewed_at and owner.

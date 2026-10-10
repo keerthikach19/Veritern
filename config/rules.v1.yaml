@@ -1,0 +1,22 @@
+version: '1.0'
+policy: Evidence eligibility precedes every concern rule. No scam probability or safety verdict.
+rules:
+  ID01: Recruiting authority needs clarification; agency domains can be legitimate.
+  ID02: Precise authoritative denial; automated authority verification is not enabled.
+  FEE01: Earlier free promise plus later mandatory same-benefit charge, matched program/batch and dates.
+  FEE02: Charge with incomplete disclosure evidence; do not invent joining terms.
+  FEE03: Optional fee disclosed before joining is informational.
+  PAY00: Conditional/maximum stipend is not guaranteed earnings.
+  PAY01: Guarantee and later hidden condition require compatible program/batch and chronology.
+  PAY02: Past due date plus participant-reported nonreceipt; not independent proof.
+  PAY03: Nonreceipt with unknown due date remains unresolved.
+  EXP01: Standardized projects are informational, never fraud alone.
+  EXP02: Explicit promised support and scoped denial; retain contrary accounts.
+  PART01: Advertiser-only partnership remains unverified.
+  PART02: Explicit authoritative relationship scope narrower than advertised; manual verification needed.
+  REF01: Referral requirement; distinguish disclosure and mandatory status.
+  WORK01: Usable unpaid business deliverables need clarification, no legal conclusion.
+  PROMO01: Promotion condition; do not infer every review is fake.
+  PRIV01: Exact sensitive-action request; never execute it.
+  PRESS01: Pressure is contextual, not independently decisive.
+  CHANGE01: Changed terms need original agreement and amendment context.

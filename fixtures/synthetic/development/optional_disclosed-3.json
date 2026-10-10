@@ -1,0 +1,85 @@
+{
+  "provenance": "Author-created synthetic ground truth; not real evidence",
+  "family": "optional_disclosed",
+  "expected_rules": [
+    "FEE03"
+  ],
+  "case": {
+    "id": "3b97230e-4071-4218-b525-60e9c3cf1b99",
+    "owner": "fictional-evaluation",
+    "original_input": "Fictional optional_disclosed",
+    "entity": {
+      "id": "e3cd2b7e-3e6b-48ac-9a30-194a595b7c87",
+      "name": "Fictional optional_disclosed 2",
+      "domain": "optional-disclosed-2.test",
+      "role": "unverified provider",
+      "match_state": "user_selected_scope"
+    },
+    "program": {
+      "id": "ac6c3dd2-c39c-4626-9313-c5820bf5dcbb",
+      "title": "Web Development Internship",
+      "batch": "October 2026",
+      "country": null,
+      "discipline": null
+    },
+    "mode": "demo",
+    "created_at": "2026-10-10T07:21:15.009889Z",
+    "updated_at": "2026-10-10T07:21:15.009894Z",
+    "revision": 0,
+    "saved": false,
+    "extraction_fingerprint": null,
+    "sources": [
+      {
+        "id": "9c81104b-0a56-4544-b04f-b28fde293aa6",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional optional_disclosed 2",
+        "text": "Before joining October 2026: optional INR 999 printed certificate; completion is free.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.009950Z",
+        "published_at": null,
+        "event_date": null,
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      }
+    ],
+    "spans": [
+      {
+        "id": "7dcab462-2bd2-4905-af2b-908e6f38bd32",
+        "source_id": "9c81104b-0a56-4544-b04f-b28fde293aa6",
+        "quote": "Before joining October 2026: optional INR 999 printed certificate; completion is free.",
+        "locator": "paragraph 1",
+        "verified": true
+      }
+    ],
+    "claims": [
+      {
+        "id": "5d907341-f21e-4ab9-85e5-a0696fdf89c7",
+        "kind": "fee_request",
+        "span_ids": [
+          "7dcab462-2bd2-4905-af2b-908e6f38bd32"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": null,
+        "due_date": null,
+        "amount_minor": 99900,
+        "currency": "INR",
+        "mandatory": false,
+        "disclosed_before_joining": true,
+        "condition": null,
+        "benefit": null,
+        "attribution": "advertised",
+        "verification": "unverified"
+      }
+    ],
+    "assessments": []
+  }
+}

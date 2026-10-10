@@ -1,0 +1,85 @@
+{
+  "provenance": "Author-created synthetic ground truth; not real evidence",
+  "family": "promotion_hidden",
+  "expected_rules": [
+    "PROMO01"
+  ],
+  "case": {
+    "id": "9ae1573d-21fb-4b00-8a76-88e5059eef30",
+    "owner": "fictional-evaluation",
+    "original_input": "Fictional promotion_hidden",
+    "entity": {
+      "id": "fcc665bf-5527-4f19-8f63-cd9226330a87",
+      "name": "Fictional promotion_hidden 1",
+      "domain": "promotion-hidden-1.test",
+      "role": "unverified provider",
+      "match_state": "user_selected_scope"
+    },
+    "program": {
+      "id": "000a97c5-927e-4afd-92d9-7625a8427019",
+      "title": "Web Development Internship",
+      "batch": "October 2026",
+      "country": null,
+      "discipline": null
+    },
+    "mode": "demo",
+    "created_at": "2026-10-10T07:21:15.191420Z",
+    "updated_at": "2026-10-10T07:21:15.191426Z",
+    "revision": 0,
+    "saved": false,
+    "extraction_fingerprint": null,
+    "sources": [
+      {
+        "id": "8390023d-23eb-479d-8269-43e1d5ec2707",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional promotion_hidden 1",
+        "text": "Case variant 2. A mandatory promotional post is newly required to receive the certificate.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.191516Z",
+        "published_at": null,
+        "event_date": null,
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      }
+    ],
+    "spans": [
+      {
+        "id": "d85b774b-6155-420a-b72c-70ab7f100a29",
+        "source_id": "8390023d-23eb-479d-8269-43e1d5ec2707",
+        "quote": "Case variant 2. A mandatory promotional post is newly required to receive the certificate.",
+        "locator": "paragraph 1",
+        "verified": true
+      }
+    ],
+    "claims": [
+      {
+        "id": "df2af864-dbf3-4b9b-84dd-cb9253404485",
+        "kind": "promotion_condition",
+        "span_ids": [
+          "d85b774b-6155-420a-b72c-70ab7f100a29"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": null,
+        "due_date": null,
+        "amount_minor": null,
+        "currency": null,
+        "mandatory": true,
+        "disclosed_before_joining": false,
+        "condition": null,
+        "benefit": null,
+        "attribution": "advertised",
+        "verification": "unverified"
+      }
+    ],
+    "assessments": []
+  }
+}

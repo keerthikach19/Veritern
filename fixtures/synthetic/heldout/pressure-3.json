@@ -1,0 +1,85 @@
+{
+  "provenance": "Author-created synthetic ground truth; not real evidence",
+  "family": "pressure",
+  "expected_rules": [
+    "PRESS01"
+  ],
+  "case": {
+    "id": "8ef46e93-e772-4858-8364-dce4b7e518b8",
+    "owner": "fictional-evaluation",
+    "original_input": "Fictional pressure",
+    "entity": {
+      "id": "2c6b25ae-5338-4785-b86a-f4c015c34349",
+      "name": "Fictional pressure 2",
+      "domain": "pressure-2.test",
+      "role": "unverified provider",
+      "match_state": "user_selected_scope"
+    },
+    "program": {
+      "id": "210dcc2d-2a45-463e-81ca-4d95653200bb",
+      "title": "Web Development Internship",
+      "batch": "October 2026",
+      "country": null,
+      "discipline": null
+    },
+    "mode": "demo",
+    "created_at": "2026-10-10T07:21:15.206097Z",
+    "updated_at": "2026-10-10T07:21:15.206104Z",
+    "revision": 0,
+    "saved": false,
+    "extraction_fingerprint": null,
+    "sources": [
+      {
+        "id": "17a5a2dd-9dbd-4533-b8aa-b75ceb0fe142",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional pressure 2",
+        "text": "Case variant 3. You must decide immediately; no time is offered to review the agreement.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.206192Z",
+        "published_at": null,
+        "event_date": null,
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      }
+    ],
+    "spans": [
+      {
+        "id": "221a516c-6342-40dd-a13f-5724c317e18d",
+        "source_id": "17a5a2dd-9dbd-4533-b8aa-b75ceb0fe142",
+        "quote": "Case variant 3. You must decide immediately; no time is offered to review the agreement.",
+        "locator": "paragraph 1",
+        "verified": true
+      }
+    ],
+    "claims": [
+      {
+        "id": "ac79a85b-708b-4ff5-9143-f8bedf26d5bb",
+        "kind": "pressure",
+        "span_ids": [
+          "221a516c-6342-40dd-a13f-5724c317e18d"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": null,
+        "due_date": null,
+        "amount_minor": null,
+        "currency": null,
+        "mandatory": null,
+        "disclosed_before_joining": null,
+        "condition": null,
+        "benefit": null,
+        "attribution": "advertised",
+        "verification": "unverified"
+      }
+    ],
+    "assessments": []
+  }
+}

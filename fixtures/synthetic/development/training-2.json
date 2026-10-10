@@ -1,0 +1,83 @@
+{
+  "provenance": "Author-created synthetic ground truth; not real evidence",
+  "family": "training",
+  "expected_rules": [],
+  "case": {
+    "id": "49180eb1-724c-42e5-ac6d-3c3e4c9142fe",
+    "owner": "fictional-evaluation",
+    "original_input": "Fictional training",
+    "entity": {
+      "id": "63acf0c2-13ab-417e-ba96-cdc4108fdc9e",
+      "name": "Fictional training 1",
+      "domain": "training-1.test",
+      "role": "unverified provider",
+      "match_state": "user_selected_scope"
+    },
+    "program": {
+      "id": "840fb5bd-2dae-4f7c-8f14-2cefbb8cee8a",
+      "title": "Web Development Internship",
+      "batch": "October 2026",
+      "country": null,
+      "discipline": null
+    },
+    "mode": "demo",
+    "created_at": "2026-10-10T07:21:15.102422Z",
+    "updated_at": "2026-10-10T07:21:15.102732Z",
+    "revision": 0,
+    "saved": false,
+    "extraction_fingerprint": null,
+    "sources": [
+      {
+        "id": "c0a51302-4f72-4c50-b030-899db28d330e",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional training 1",
+        "text": "Case variant 2. This is unpaid simulated training, with no promise of employment.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.102860Z",
+        "published_at": null,
+        "event_date": null,
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      }
+    ],
+    "spans": [
+      {
+        "id": "95c8083b-4f15-496f-ba12-f7c9aea5897b",
+        "source_id": "c0a51302-4f72-4c50-b030-899db28d330e",
+        "quote": "Case variant 2. This is unpaid simulated training, with no promise of employment.",
+        "locator": "paragraph 1",
+        "verified": true
+      }
+    ],
+    "claims": [
+      {
+        "id": "2e01b6d3-18fc-4708-8be0-3381f998d748",
+        "kind": "disclosed_training",
+        "span_ids": [
+          "95c8083b-4f15-496f-ba12-f7c9aea5897b"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": null,
+        "due_date": null,
+        "amount_minor": null,
+        "currency": null,
+        "mandatory": null,
+        "disclosed_before_joining": null,
+        "condition": null,
+        "benefit": null,
+        "attribution": "advertised",
+        "verification": "unverified"
+      }
+    ],
+    "assessments": []
+  }
+}

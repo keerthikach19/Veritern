@@ -1,0 +1,85 @@
+{
+  "provenance": "Author-created synthetic ground truth; not real evidence",
+  "family": "sensitive",
+  "expected_rules": [
+    "PRIV01"
+  ],
+  "case": {
+    "id": "070c4ec5-e9e5-4a0c-a952-b64cea1b8dbf",
+    "owner": "fictional-evaluation",
+    "original_input": "Fictional sensitive",
+    "entity": {
+      "id": "c3c153c2-d5b5-42fd-b31c-4b9029691a08",
+      "name": "Fictional sensitive 2",
+      "domain": "sensitive-2.test",
+      "role": "unverified provider",
+      "match_state": "user_selected_scope"
+    },
+    "program": {
+      "id": "56adae90-8a97-473a-9abf-36605c2540f9",
+      "title": "Web Development Internship",
+      "batch": "October 2026",
+      "country": null,
+      "discipline": null
+    },
+    "mode": "demo",
+    "created_at": "2026-10-10T07:21:15.125599Z",
+    "updated_at": "2026-10-10T07:21:15.125605Z",
+    "revision": 0,
+    "saved": false,
+    "extraction_fingerprint": null,
+    "sources": [
+      {
+        "id": "4aedb26a-a88d-4249-9ea8-878846719feb",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional sensitive 2",
+        "text": "Case variant 3. Send your account password and OTP to release earnings.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.125693Z",
+        "published_at": null,
+        "event_date": null,
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      }
+    ],
+    "spans": [
+      {
+        "id": "2881d040-0bfa-4599-96f6-bbdd60573288",
+        "source_id": "4aedb26a-a88d-4249-9ea8-878846719feb",
+        "quote": "Case variant 3. Send your account password and OTP to release earnings.",
+        "locator": "paragraph 1",
+        "verified": true
+      }
+    ],
+    "claims": [
+      {
+        "id": "f84610d3-01c9-400f-ba94-e81000af07cb",
+        "kind": "sensitive_request",
+        "span_ids": [
+          "2881d040-0bfa-4599-96f6-bbdd60573288"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": null,
+        "due_date": null,
+        "amount_minor": null,
+        "currency": null,
+        "mandatory": null,
+        "disclosed_before_joining": null,
+        "condition": null,
+        "benefit": null,
+        "attribution": "advertised",
+        "verification": "unverified"
+      }
+    ],
+    "assessments": []
+  }
+}

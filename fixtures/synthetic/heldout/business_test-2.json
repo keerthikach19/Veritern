@@ -1,0 +1,85 @@
+{
+  "provenance": "Author-created synthetic ground truth; not real evidence",
+  "family": "business_test",
+  "expected_rules": [
+    "WORK01"
+  ],
+  "case": {
+    "id": "dd2e4909-ae05-420f-a6e2-ff3f1c4b99b1",
+    "owner": "fictional-evaluation",
+    "original_input": "Fictional business_test",
+    "entity": {
+      "id": "c93bcd56-8137-4302-babd-026f5def7c33",
+      "name": "Fictional business_test 1",
+      "domain": "business-test-1.test",
+      "role": "unverified provider",
+      "match_state": "user_selected_scope"
+    },
+    "program": {
+      "id": "c252fde9-c687-42a4-a126-a1dc54d2b427",
+      "title": "Web Development Internship",
+      "batch": "October 2026",
+      "country": null,
+      "discipline": null
+    },
+    "mode": "demo",
+    "created_at": "2026-10-10T07:21:15.215493Z",
+    "updated_at": "2026-10-10T07:21:15.215500Z",
+    "revision": 0,
+    "saved": false,
+    "extraction_fingerprint": null,
+    "sources": [
+      {
+        "id": "0969c4d6-c4b6-441e-aecd-0cd91d50a1c5",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional business_test 1",
+        "text": "Case variant 2. The unpaid test requests three finished business deliverables for customer use.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.215585Z",
+        "published_at": null,
+        "event_date": null,
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      }
+    ],
+    "spans": [
+      {
+        "id": "7b9b0d8a-97c5-4854-bb50-f7e8c7d0b68f",
+        "source_id": "0969c4d6-c4b6-441e-aecd-0cd91d50a1c5",
+        "quote": "Case variant 2. The unpaid test requests three finished business deliverables for customer use.",
+        "locator": "paragraph 1",
+        "verified": true
+      }
+    ],
+    "claims": [
+      {
+        "id": "50853916-6639-4360-9669-edf22d328acd",
+        "kind": "unpaid_business_test",
+        "span_ids": [
+          "7b9b0d8a-97c5-4854-bb50-f7e8c7d0b68f"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": null,
+        "due_date": null,
+        "amount_minor": null,
+        "currency": null,
+        "mandatory": null,
+        "disclosed_before_joining": null,
+        "condition": null,
+        "benefit": null,
+        "attribution": "advertised",
+        "verification": "unverified"
+      }
+    ],
+    "assessments": []
+  }
+}

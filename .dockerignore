@@ -1,0 +1,10 @@
+.env
+.venv*
+private_data
+**/__pycache__
+.pytest_cache
+.ruff_cache
+.git
+.streamlit/secrets.toml
+*.sqlite*
+deploy/searxng/settings.yml

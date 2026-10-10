@@ -1,0 +1,131 @@
+{
+  "provenance": "Author-created synthetic ground truth; not real evidence",
+  "family": "mentorship",
+  "expected_rules": [
+    "EXP02"
+  ],
+  "case": {
+    "id": "88724fb3-e8aa-4662-91a9-a69047c81a28",
+    "owner": "fictional-evaluation",
+    "original_input": "Fictional mentorship",
+    "entity": {
+      "id": "7e6183a0-c089-4546-b715-7c54e867bc6f",
+      "name": "Fictional mentorship 0",
+      "domain": "mentorship-0.test",
+      "role": "unverified provider",
+      "match_state": "user_selected_scope"
+    },
+    "program": {
+      "id": "135772df-09d6-4aae-930b-0a4445104e08",
+      "title": "Web Development Internship",
+      "batch": "October 2026",
+      "country": null,
+      "discipline": null
+    },
+    "mode": "demo",
+    "created_at": "2026-10-10T07:21:15.048696Z",
+    "updated_at": "2026-10-10T07:21:15.048704Z",
+    "revision": 0,
+    "saved": false,
+    "extraction_fingerprint": null,
+    "sources": [
+      {
+        "id": "91325c3b-b020-4c5d-bc68-3901149342e7",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional mentorship 0",
+        "text": "October 2026 includes weekly review by a mentor.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.048794Z",
+        "published_at": null,
+        "event_date": null,
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      },
+      {
+        "id": "54d63518-d35e-4b6b-afd8-7b1d4308ce84",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional mentorship 0",
+        "text": "In October 2026 my mentor never reviewed the submitted project.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.048963Z",
+        "published_at": null,
+        "event_date": null,
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      }
+    ],
+    "spans": [
+      {
+        "id": "4a1cba78-73f3-4427-821f-bc48963f41e6",
+        "source_id": "91325c3b-b020-4c5d-bc68-3901149342e7",
+        "quote": "October 2026 includes weekly review by a mentor.",
+        "locator": "paragraph 1",
+        "verified": true
+      },
+      {
+        "id": "0bded488-336b-4cc8-93e3-a922bfe89125",
+        "source_id": "54d63518-d35e-4b6b-afd8-7b1d4308ce84",
+        "quote": "In October 2026 my mentor never reviewed the submitted project.",
+        "locator": "paragraph 1",
+        "verified": true
+      }
+    ],
+    "claims": [
+      {
+        "id": "87a6563d-cb65-4af1-bbf3-16539e2916da",
+        "kind": "mentorship_promise",
+        "span_ids": [
+          "4a1cba78-73f3-4427-821f-bc48963f41e6"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": null,
+        "due_date": null,
+        "amount_minor": null,
+        "currency": null,
+        "mandatory": null,
+        "disclosed_before_joining": null,
+        "condition": null,
+        "benefit": null,
+        "attribution": "advertised",
+        "verification": "unverified"
+      },
+      {
+        "id": "01d702af-54b5-4229-9dba-f77a1c817662",
+        "kind": "mentorship_denial",
+        "span_ids": [
+          "0bded488-336b-4cc8-93e3-a922bfe89125"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": null,
+        "due_date": null,
+        "amount_minor": null,
+        "currency": null,
+        "mandatory": null,
+        "disclosed_before_joining": null,
+        "condition": null,
+        "benefit": null,
+        "attribution": "participant_reported",
+        "verification": "unverified"
+      }
+    ],
+    "assessments": []
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "provenance": "Author-created synthetic ground truth; not real evidence",
+  "family": "referral_hidden",
+  "expected_rules": [
+    "REF01"
+  ],
+  "case": {
+    "id": "936468d9-8101-494e-bdd6-6ed4941da591",
+    "owner": "fictional-evaluation",
+    "original_input": "Fictional referral_hidden",
+    "entity": {
+      "id": "9117e4d7-909b-4849-b9b4-c0be18b95930",
+      "name": "Fictional referral_hidden 0",
+      "domain": "referral-hidden-0.test",
+      "role": "unverified provider",
+      "match_state": "user_selected_scope"
+    },
+    "program": {
+      "id": "263ad79f-036b-47ff-b323-cfe82d3b15a7",
+      "title": "Web Development Internship",
+      "batch": "October 2026",
+      "country": null,
+      "discipline": null
+    },
+    "mode": "demo",
+    "created_at": "2026-10-10T07:21:15.164207Z",
+    "updated_at": "2026-10-10T07:21:15.164212Z",
+    "revision": 0,
+    "saved": false,
+    "extraction_fingerprint": null,
+    "sources": [
+      {
+        "id": "272e3993-87d4-4c83-9246-962ec2a84051",
+        "title": "Fictional evidence",
+        "url": null,
+        "publisher": "Fictional referral_hidden 0",
+        "text": "Case variant 1. The mandatory referral requirement was first disclosed after joining.",
+        "kind": "synthetic",
+        "access": "retrieved",
+        "retrieved_at": "2026-10-10T07:21:15.164281Z",
+        "published_at": null,
+        "event_date": null,
+        "scope_confirmed": true,
+        "ocr_review_required": false,
+        "consented": false,
+        "cached": false,
+        "truncated": false,
+        "note": "",
+        "origin_group": null,
+        "extraction_version": "text-v1"
+      }
+    ],
+    "spans": [
+      {
+        "id": "3149b0c4-c0ee-4e90-91d1-a29283f0e1d3",
+        "source_id": "272e3993-87d4-4c83-9246-962ec2a84051",
+        "quote": "Case variant 1. The mandatory referral requirement was first disclosed after joining.",
+        "locator": "paragraph 1",
+        "verified": true
+      }
+    ],
+    "claims": [
+      {
+        "id": "f9155da4-2f4c-44f0-90cd-26b0c5b2c6aa",
+        "kind": "referral_condition",
+        "span_ids": [
+          "3149b0c4-c0ee-4e90-91d1-a29283f0e1d3"
+        ],
+        "program": "Web Development Internship",
+        "batch": "October 2026",
+        "event_date": null,
+        "due_date": null,
+        "amount_minor": null,
+        "currency": null,
+        "mandatory": true,
+        "disclosed_before_joining": false,
+        "condition": null,
+        "benefit": null,
+        "attribution": "advertised",
+        "verification": "unverified"
+      }
+    ],
+    "assessments": []
+  }
+}
