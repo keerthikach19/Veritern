@@ -2,6 +2,7 @@ import json
 import re
 
 from veritern.analysis.local import review_local_documents
+from veritern.analysis.website import verification_links, website_topics
 from veritern.ingestion.redact import redact
 from veritern.rules import assess
 from veritern.schemas import Assessment, Case, Check, Usage
@@ -17,6 +18,7 @@ def assemble(
     case: Case, checks: list[Check], usage: Usage, limitations: list[str], model="unavailable"
 ) -> Assessment:
     local_findings = review_local_documents(case)
+    topics = website_topics(case)
     findings = assess(case) + local_findings
     if any(f.severity == "material_concern" for f in findings):
         headline = "Material concerns found in reviewed evidence"
@@ -24,12 +26,23 @@ def assemble(
         headline = "Clarification needed before proceeding"
     else:
         headline = "Insufficient evidence to assess the opportunity"
+        if topics and all(t.state == "not_checked" for t in topics):
+            headline = "Website review incomplete — no readable site evidence"
+        elif topics and model == "unavailable":
+            headline = "Basic website review — business not independently verified"
     return Assessment(
         version=len(case.assessments) + 1,
         headline=headline,
         findings=findings,
+        website_topics=topics,
         checks=checks,
-        questions=QUESTIONS,
+        questions=[
+            "Who legally operates this exact domain, and does the relevant registry match that name?",
+            "Is this employment, supervised training or a certificate program, and who is the named supervisor?",
+            "What are the total charges, stipend conditions and refund terms for this exact batch?",
+        ]
+        if topics
+        else QUESTIONS,
         usage=usage,
         model=model,
         status="partial",
@@ -88,6 +101,19 @@ def export_markdown(case: Case) -> str:
         lines.append("**FICTIONAL DEMONSTRATION — no live investigation.**")
     spans = {s.id: s for s in case.spans}
     sources = {s.id: s for s in case.sources}
+    if report.website_topics:
+        lines.append("## Website reading — self-published claims, not verification")
+        for topic in report.website_topics:
+            lines.extend([f"### {topic.title}", topic.state, plain(topic.next_step)])
+            for span_id in topic.span_ids:
+                span = spans[span_id]
+                source = sources[span.source_id]
+                lines.extend(
+                    ["> " + plain(span.quote), "Source: " + plain(source.url or source.title)]
+                )
+        lines.append("## Independent verification — links to open, not completed checks")
+        for title, url, hint in verification_links(case.entity.domain):
+            lines.append(f"[{title}]({url}) — {hint}")
     for finding in report.findings:
         lines.extend(
             [

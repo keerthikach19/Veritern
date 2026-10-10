@@ -5,6 +5,7 @@ from zoneinfo import ZoneInfo
 
 import streamlit as st
 
+from veritern.analysis.website import verification_links
 from veritern.config import Settings
 from veritern.demo import DEMOS, add_late_fee, fact, new_demo, refresh_demo
 from veritern.discovery.search import Search, SearchUnavailable
@@ -12,9 +13,16 @@ from veritern.identity import domain, normalize_url
 from veritern.ingestion.parser import parse_upload
 from veritern.ingestion.redact import redact
 from veritern.pipeline.runner import Runner
+from veritern.reference import load_references, reference_for_url
 from veritern.reporting.reports import export_json, export_markdown
 from veritern.schemas import Case, Dimension, Entity, FactKind, Program, Source
 from veritern.storage.repository import Repository
+from veritern.ui.reference import (
+    compare_references,
+    method_and_model,
+    reference_library,
+    reference_report,
+)
 
 
 @st.cache_resource
@@ -30,6 +38,7 @@ def activate(case, repo):
     st.session_state.pop("job_key", None)
     st.session_state.pop("preview", None)
     st.session_state.pop("candidates", None)
+    st.session_state.pop("reference_id", None)
 
 
 def begin(url, program, mode, repo, runner, settings):
@@ -50,10 +59,16 @@ def home(settings, repo, runner):
     st.caption("EVIDENCE BEFORE COMMITMENT")
     st.title("Look beyond the offer.")
     st.markdown("Compare what an internship promises with what the evidence actually supports.")
+    if settings.reference_cases_enabled:
+        st.caption(
+            "Enter a supported company URL to review its supplied reference text. Uncheck ‘Use provided reference text’ for fresh website checks."
+        )
+    elif settings.app_mode != "demo":
+        readiness(settings)
     with st.container(border=True):
         with st.form("investigation"):
             target = st.text_input(
-                "Company name or website URL",
+                "Company name or website URL" if settings.search_ready else "Website URL",
                 placeholder="e.g. company.com or a company name",
                 max_chars=250,
             )
@@ -61,11 +76,27 @@ def home(settings, repo, runner):
                 "Program name (optional)",
                 placeholder="A specific program improves matching",
                 max_chars=120,
+                help="Used for live research. Reference reviews retain the program and dates in their supplied source material.",
             )
-            manual = st.checkbox("Manual discovery — use the website and evidence I add")
+            use_reference = (
+                st.checkbox("Use provided reference text", value=True)
+                if settings.reference_cases_enabled
+                else False
+            )
+            manual = (
+                st.checkbox("Manual discovery — use the website and evidence I add")
+                if not settings.reference_cases_enabled
+                else False
+            )
             confirmed = st.checkbox("For a URL: this is the website I want to investigate")
             submitted = st.form_submit_button(
-                "Investigate →", type="primary", disabled=settings.app_mode == "demo"
+                "Review →"
+                if settings.reference_cases_enabled
+                else "Investigate →"
+                if settings.search_ready
+                else "Review website →",
+                type="primary",
+                disabled=settings.app_mode == "demo" and not settings.reference_cases_enabled,
             )
         st.caption(
             "No document upload needed. Selecting a site sets the scope; it does not verify the business."
@@ -79,15 +110,34 @@ def home(settings, repo, runner):
                         "Confirm the website above to keep unrelated companies out of this case."
                     )
                 else:
-                    begin(
-                        target,
-                        program,
-                        "manual" if manual or settings.search_backend == "manual" else "live",
-                        repo,
-                        runner,
-                        settings,
-                    )
-                    st.rerun()
+                    if use_reference:
+                        reference = reference_for_url(target)
+                        if reference is None:
+                            st.warning(
+                                "No supplied reference exists for this domain. Uncheck ‘Use provided reference text’ to run a website review; no company result will be guessed."
+                            )
+                        else:
+                            st.session_state.reference_id = reference.id
+                            st.session_state.pop("case_id", None)
+                            st.rerun()
+                    elif settings.app_mode == "demo":
+                        st.warning(
+                            "Live website access is disabled by APP_MODE. Set APP_MODE=live to run network checks."
+                        )
+                    else:
+                        begin(
+                            target,
+                            program,
+                            "manual" if manual or settings.search_backend == "manual" else "live",
+                            repo,
+                            runner,
+                            settings,
+                        )
+                        st.rerun()
+            elif target.strip() and not settings.search_ready:
+                st.warning(
+                    "Company-name discovery needs a search provider. Enter the exact website URL for a basic review."
+                )
             elif target.strip():
                 with st.spinner("Finding candidate websites…"):
                     candidates = asyncio.run(Search(settings).candidates(target))
@@ -136,6 +186,9 @@ def home(settings, repo, runner):
                 repo,
             )
             st.rerun()
+    if settings.reference_cases_enabled:
+        reference_library()
+        return
     st.subheader("Explore a fictional case")
     st.caption("Six ready-to-run examples. No API keys, live searches, or model calls.")
     selected = st.selectbox("Example", list(DEMOS), format_func=DEMOS.get)
@@ -334,10 +387,14 @@ def report_view(case, settings, repo, runner):
         st.info("No assessment yet. Reassess to start or resume the investigation.")
     else:
         assessment = case.assessments[-1]
+        if case.mode != "demo":
+            readiness(settings, manual=case.mode == "manual")
         st.subheader(assessment.headline)
         st.caption(
             f"Assessment {assessment.version} · {assessment.created_at.astimezone(ZoneInfo(settings.display_timezone)).strftime('%d %b %Y, %H:%M')} · {assessment.status}"
         )
+        if case.entity.domain and case.mode != "demo":
+            website_review(case, assessment)
         for col, dimension in zip(st.columns(4), Dimension, strict=True):
             findings = [f for f in assessment.findings if f.dimension == dimension]
             with col, st.container(border=True):
@@ -358,7 +415,7 @@ def report_view(case, settings, repo, runner):
             sources = {s.id: s for s in case.sources}
             if not assessment.findings:
                 st.info(
-                    "No supported concern has been established from the available evidence. This does not establish safety."
+                    "No rule-based finding is available from this review. Read the website excerpts and complete the independent checks above before drawing a conclusion."
                 )
             for finding in assessment.findings:
                 with st.container(border=True):
@@ -437,7 +494,15 @@ def report_view(case, settings, repo, runner):
             "veritern-report.json",
             "application/json",
         )
-    with st.expander("Add evidence or a correction", expanded=case.mode == "demo"):
+    with st.expander(
+        "Add evidence or a correction",
+        expanded=case.mode == "demo"
+        or (
+            bool(case.assessments)
+            and all(t.state == "not_checked" for t in case.assessments[-1].website_topics)
+            and bool(case.assessments[-1].website_topics)
+        ),
+    ):
         add_evidence(case, settings, repo, runner)
     if case.mode != "demo" and st.button("Reassess / resume with current evidence"):
         case.revision += 1
@@ -462,6 +527,100 @@ def report_view(case, settings, repo, runner):
         st.rerun()
 
 
+def readiness(settings, manual=False):
+    search = settings.search_ready and not manual
+    ai = bool(settings.groq_api_key.get_secret_value())
+    if not search or not ai:
+        missing = []
+        if not search:
+            missing.append("Independent web search is off")
+        if not ai:
+            missing.append("AI claim comparison is off")
+        st.warning(
+            "Basic review available. "
+            + ". ".join(missing)
+            + ". Website excerpts and connection checks do not verify the business."
+        )
+        with st.expander("Enable independent search and claim comparison"):
+            st.write(
+                "For automated outside evidence, configure a Serper or Brave Search key. For semantic comparison, configure a Groq key. Enter keys locally in .env using .env.example, then restart Veritern. Do not paste keys into evidence or reports."
+            )
+            if manual and settings.search_ready:
+                st.caption(
+                    "This case uses manual discovery. Start a new investigation with manual discovery unchecked to use your configured search provider."
+                )
+
+
+def website_review(case, assessment):
+    st.subheader("What this review actually checked")
+    technical = [c for c in assessment.checks if c.name in ("Public DNS", "HTTPS connection")]
+    for check in technical:
+        st.write(f"**{check.name}: {'passed' if check.state == 'resolved' else 'not verified'}**")
+        st.caption(check.reason)
+    pages = {s.url: s for s in case.sources if s.kind in ("official", "third_party")}
+    official = [
+        s
+        for s in pages.values()
+        if s.kind == "official" and s.scope_confirmed and s.access == "retrieved"
+    ]
+    snippets = [s for s in case.sources if s.kind == "snippet"]
+    third_party = [
+        s
+        for s in pages.values()
+        if s.kind == "third_party" and s.scope_confirmed and s.access == "retrieved"
+    ]
+    st.write(
+        f"{len(official)} website pages read · {len(third_party)} matched outside pages read · {len(snippets)} search snippets collected"
+    )
+    if not official:
+        st.error(
+            "The website's content was not read. This is an incomplete check, not evidence that the company is fake."
+        )
+        for source in list(pages.values())[:3]:
+            st.caption(source.note or source.access)
+        st.write(
+            "Open the site in your browser. If it loads, paste its About, fees or program text in ‘Add evidence’ below, or upload a screenshot. Use the independent-check links below when the site is unavailable."
+        )
+        st.link_button(
+            "Open selected website",
+            normalize_url(
+                case.original_input
+                if "." in case.original_input and " " not in case.original_input
+                else case.entity.domain
+            ),
+        )
+    if assessment.website_topics and official:
+        st.markdown("**What the website says**")
+        st.caption(
+            "Keyword-selected excerpts from the selected domain, not verified facts or an AI assessment. A missing topic only means it was not found in these fetched pages."
+        )
+        spans = {s.id: s for s in case.spans}
+        sources = {s.id: s for s in case.sources}
+        for topic in assessment.website_topics:
+            label = "wording found" if topic.state == "mentioned" else "not found in fetched text"
+            with st.expander(
+                f"{topic.title} · {label}", expanded=topic.title == "Operator & registration"
+            ):
+                for span_id in topic.span_ids:
+                    span = spans[span_id]
+                    source = sources[span.source_id]
+                    st.text(span.quote)
+                    st.link_button(
+                        "Read original page", source.url, key="website-" + topic.title + span_id
+                    )
+                st.write("Verify next: " + topic.next_step)
+    st.markdown("**Verify the business and this offer separately**")
+    st.write(
+        "Match the legal operator to an independent registry record. Confirm that the operator uses this exact domain and authorizes this recruiter. Then verify the program's work, supervision, charges and stipend with written terms and recent participants."
+    )
+    with st.expander(
+        "Open independent checks — these have not been run by Veritern", expanded=not official
+    ):
+        for title, url, hint in verification_links(case.entity.domain):
+            st.link_button(title, url)
+            st.caption(hint)
+
+
 def main():
     st.set_page_config(
         page_title="Veritern · Evidence before commitment", page_icon="◈", layout="wide"
@@ -480,7 +639,15 @@ def main():
         st.title("◈ Veritern")
         st.caption("An evidence-first second look.")
         st.divider()
-        display_mode = active_case.mode if active_case else settings.app_mode
+        display_mode = (
+            "reference"
+            if st.session_state.get("reference_id") and settings.reference_cases_enabled
+            else active_case.mode
+            if active_case
+            else "basic review"
+            if settings.app_mode == "live" and not settings.search_ready
+            else settings.app_mode
+        )
         st.markdown(f"**{display_mode.upper()} MODE**")
         st.caption(
             f"Discovery: {settings.search_backend} · {'configured' if settings.search_ready else 'not configured'}"
@@ -491,8 +658,9 @@ def main():
         if settings.ephemeral_storage:
             st.warning("Ephemeral storage: saved cases may disappear after a host restart.")
         if st.button("New investigation", width="stretch", disabled=runner.active):
-            for key in ("case_id", "preview", "candidates"):
+            for key in ("case_id", "preview", "candidates", "reference_id"):
                 st.session_state.pop(key, None)
+            st.session_state.workspace_page = "Review"
             st.rerun()
         if settings.app_env == "local":
             saved = repo.list_saved()
@@ -505,12 +673,31 @@ def main():
                 if st.button("Open saved case"):
                     st.session_state.owner = selected.owner
                     st.session_state.case_id = selected.id
+                    st.session_state.pop("reference_id", None)
                     st.rerun()
         if st.button("Clear public page cache"):
             repo.clear_cache()
             st.success("Public page cache cleared.")
         st.divider()
         st.caption("No scam scores. No safety seals. Missing evidence stays missing.")
+        page = (
+            st.radio(
+                "Workspace",
+                ["Review", "Compare references", "Method & model"],
+                key="workspace_page",
+            )
+            if settings.reference_cases_enabled
+            else "Review"
+        )
+    if page == "Compare references":
+        compare_references(settings)
+        return
+    if page == "Method & model":
+        method_and_model(settings)
+        return
+    if settings.reference_cases_enabled and (reference_id := st.session_state.get("reference_id")):
+        reference_report(load_references()[reference_id], settings)
+        return
     case = repo.get(st.session_state.get("case_id", ""), st.session_state.owner)
     if case:
         report_view(case, settings, repo, runner)

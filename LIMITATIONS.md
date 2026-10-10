@@ -2,9 +2,13 @@
 
 Veritern supports pre-join due diligence. It does not determine criminal intent, verify that an employer is safe, or guarantee future payment.
 
+**Provided reference cases:** five company-specific text bundles came from the project owner's notes and pattern lists. No original letter images were supplied. These reports identify phrases and explain supplied observations; they do not perform OCR, fresh website research, AI inference, registry checks or issuer authentication. They are labeled accordingly in the UI and exports. Wipro's positive structural indicators do not establish authenticity. See `docs/REFERENCE_CASES.md`.
+
 **Local document review:** PDF/image/email/text parsing and transparent payment/sensitive-request/sender-domain cues can run without an API key. OCR needs Tesseract. Pattern matches are prompts to inspect the wording, not complete semantic judgments. Negation and uncommon phrasing may cause abstention or misses.
 
 **Public research:** depends on search credentials, accessible pages and actual evidence. Private experiences that nobody supplied remain unknown. Reddit, LinkedIn and Glassdoor direct access is not checked. Snippets remain leads. Robots, login walls and JS-only pages are not bypassed.
+
+**Basic website review:** DNS and TLS checks, public page retrieval and keyword-selected exact excerpts work without keys. They establish technical presence and summarize self-published wording, not business identity or offer authenticity. Registry/search links are manual next steps, not completed checks. A connection failure, unreadable robots policy and explicit robots denial have separate statuses. The app must run with internet access for live checks.
 
 **Promise comparisons:** require exact quotes and compatible program/batch/date/benefit. Missing scope leads to clarification rather than a contradiction. Uploaded documents and email headers are not authenticated. Company-name matches require explicit website selection.
 

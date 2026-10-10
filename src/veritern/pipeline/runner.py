@@ -9,6 +9,7 @@ from veritern.config import Settings
 from veritern.discovery.search import Search, SearchUnavailable, query_plan
 from veritern.identity import domain, normalize_url
 from veritern.identity.resolve import in_scope
+from veritern.identity.technical import connection_checks
 from veritern.llm.client import AnalysisUnavailable, GroqInference
 from veritern.reporting.reports import assemble
 from veritern.retrieval.safe import Fetcher
@@ -27,7 +28,7 @@ class Runner:
 
     def start(self, case: Case) -> str:
         self.repo.cleanup()
-        key = f"{case.id}:{case.revision}:pipeline-v1"
+        key = f"{case.id}:{case.revision}:pipeline-v2"
         if self.repo.job(key, case.owner):
             return key
         with self.lock:
@@ -104,7 +105,7 @@ class Runner:
                 async with semaphore:
                     if cancelled():
                         return []
-                    cache_key = "page-v1:" + hashlib.sha256(url.encode()).hexdigest()
+                    cache_key = "page-v2:" + hashlib.sha256(url.encode()).hexdigest()
                     cached = self.repo.cache_get(cache_key)
                     links = []
                     if cached:
@@ -130,7 +131,7 @@ class Runner:
                     checks.append(
                         Check(
                             name="Fetch " + url,
-                            state="unresolved"
+                            state="resolved"
                             if source.access == "retrieved"
                             else "blocked"
                             if source.access in ("blocked", "robots_disallowed")
@@ -170,18 +171,24 @@ class Runner:
             )
             if initial:
                 reserve(initial)
-            official_links = await fetch(initial) if initial else []
+                technical, official_links = await asyncio.gather(
+                    connection_checks(initial, min(8, s.fetch_timeout_seconds)), fetch(initial)
+                )
+                checks.extend(technical)
+            else:
+                official_links = []
             urls = list(official_links)
-            progress("discovering", "Searching reviews, terms and participant experiences…")
             if case.mode == "manual" or not s.search_ready:
+                progress("fetching", "Reading available website pages; independent search is off…")
                 checks.append(
                     Check(
                         name="Automated discovery",
                         state="not_attempted",
-                        reason="Manual mode or missing search credentials",
+                        reason="Independent search was not run. Manual discovery is selected or no search provider key is configured. Website excerpts cannot corroborate the business's own claims.",
                     )
                 )
             else:
+                progress("discovering", "Searching reviews, terms and participant experiences…")
                 search = Search(s)
                 query_gate = asyncio.Semaphore(2)
 
@@ -237,6 +244,18 @@ class Runner:
             cluster_origins(case.sources)
             checkpoint()
             if cancelled():
+                return
+            if not s.groq_api_key.get_secret_value():
+                limits.append(
+                    "Groq key missing; only local document cues and website topic excerpts were reviewed. No AI claim comparison ran."
+                )
+                checks.append(
+                    Check(
+                        name="Structured extraction",
+                        state="not_attempted",
+                        reason="No Groq key configured. Basic website reading works without it; semantic claim comparison is off.",
+                    )
+                )
                 return
             progress("extracting", "Extracting source-linked claims in one bounded model batch…")
             fingerprint = hashlib.sha256(
@@ -300,7 +319,7 @@ class Runner:
             )
         if cancelled():
             return
-        progress("analyzing", "Comparing promises, conditions and reported experiences…")
+        progress("analyzing", "Preparing the evidence review and remaining verification steps…")
         usage.elapsed_seconds = round(time.monotonic() - started, 2)
         checks.extend(
             [
@@ -327,4 +346,4 @@ class Runner:
         )
         case.assessments.append(assemble(case, checks, usage, limits, model))
         checkpoint()
-        progress("partial", "Report ready — findings and unresolved checks are shown separately")
+        progress("partial", "Review ready — read the coverage and verification steps")

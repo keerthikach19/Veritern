@@ -15,5 +15,5 @@ with zipfile.ZipFile(archive) as wheel:
         if not (destination / name).resolve().is_relative_to(destination.resolve()):
             raise ValueError("Unsafe archive path")
     wheel.extractall(destination)
-code = "import sys; sys.path.insert(0, sys.argv[1]); import veritern; from veritern.cli import evaluate; print('Wheel package:', veritern.__file__); assert evaluate('heldout')"
+code = "import sys; sys.path.insert(0, sys.argv[1]); import veritern; from veritern.cli import evaluate; from veritern.reference import load_references; print('Wheel package:', veritern.__file__); assert len(load_references()) == 5; assert evaluate('heldout')"
 subprocess.run([sys.executable, "-I", "-c", code, str(destination)], check=True, cwd=root / "dist")

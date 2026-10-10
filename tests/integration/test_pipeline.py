@@ -70,7 +70,12 @@ async def test_searxng_json_disabled(settings):
 
 
 async def test_manual_pipeline_missing_model_is_honest(settings, monkeypatch):
-    from veritern.schemas import Source
+    from veritern.schemas import Check, Source
+
+    async def technical(*args):
+        return [Check(name="Public DNS", state="resolved", reason="Mock public DNS")]
+
+    monkeypatch.setattr("veritern.pipeline.runner.connection_checks", technical)
 
     async def fetch(*args):
         return Source(
@@ -95,7 +100,12 @@ async def test_manual_pipeline_missing_model_is_honest(settings, monkeypatch):
     repo.claim_job("job", case.id, case.owner)
     await runner.run("job", case.id, case.owner)
     result = repo.get(case.id, case.owner)
-    assert result.assessments[-1].headline.startswith("Insufficient")
+    assert result.assessments[-1].headline.startswith("Basic website review")
+    assert len(result.assessments[-1].website_topics) == 4
+    assert (
+        next(c for c in result.assessments[-1].checks if c.name == "Structured extraction").state
+        == "not_attempted"
+    )
     assert any("key missing" in s for s in result.assessments[-1].limitations)
     assert result.assessments[-1].usage.calls == 0
 

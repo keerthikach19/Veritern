@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="forbid", env_file_encoding="utf-8")
     app_env: Literal["local", "protected"] = "local"
     app_mode: Literal["live", "demo"] = "live"
+    reference_cases_enabled: bool = False
     groq_api_key: SecretStr = SecretStr("")
     groq_model: Literal["openai/gpt-oss-20b"] = "openai/gpt-oss-20b"
     groq_timeout_seconds: float = Field(35, gt=0, le=60)

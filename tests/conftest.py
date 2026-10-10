@@ -8,6 +8,7 @@ from veritern.config import Settings
 
 @pytest.fixture(autouse=True)
 def no_network(monkeypatch, request):
+    monkeypatch.setenv("REFERENCE_CASES_ENABLED", "false")
     if request.node.get_closest_marker("live"):
         pytest.skip("Live tests require explicit operator smoke command")
 

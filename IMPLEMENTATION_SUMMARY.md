@@ -1,5 +1,15 @@
 # Veritern — build handoff
 
+## Follow-up: website reliability and reference presentation
+
+- Diagnosed the reported InternPE failure: the app server was launched with restricted outbound networking, while the same public website returned HTTP 200 with normal network access. Restarted the localhost server with authorized network access.
+- Separated connection failures and unavailable robots policies from explicit robots denial. Added bounded robots redirects, validated-address fallback, bounded gzip decoding and preservation of company footer text. No access-control bypass was added.
+- Added no-key public DNS/TLS checks, cited website-topic excerpts, upfront provider readiness, practical blocked-page recovery and independently labeled registry/search links. Website statements and HTTPS are never presented as business authentication.
+- Added five schema-validated reference-text cases, exact domain routing, phrase matching, quoted source notes, positive indicators, missing evidence, five tailored questions, comparison, exports and model/provenance views.
+- Added `REFERENCE_CASES_ENABLED` with default false; enabled it in the ignored local `.env`. A missing setting or key produces an accurate configuration state, not a fabricated token-limit message.
+- The reference material is user-provided text, not original offer images or recorded AI output. No fabricated OCR, company fees, numeric risk scores, registry confirmations, live model calls or verified-genuine labels were added. The existing Groq adapter still targets `openai/gpt-oss-20b`.
+- Source mapping and remaining omissions: [reference documentation](docs/REFERENCE_CASES.md). Earlier v1 details below remain applicable to the separate live/document pipeline.
+
 ## Delivered
 
 Built a runnable Python/Streamlit v1 from the original PLAN.md, preserved that file, and adopted the user's final project name **Veritern** across the package, CLI, UI, exports and deployment materials.

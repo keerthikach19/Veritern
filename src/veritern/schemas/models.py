@@ -35,6 +35,8 @@ class Access(StrEnum):
     NOT_FOUND = "not_found"
     BLOCKED = "blocked"
     ROBOTS = "robots_disallowed"
+    ROBOTS_UNAVAILABLE = "robots_unavailable"
+    NETWORK = "connection_failed"
     LOGIN = "login_required"
     TIMEOUT = "timeout"
     PARSE = "parse_failed"
@@ -166,6 +168,13 @@ class Usage(Record):
     reserved_output_tokens: int = 0
 
 
+class WebsiteTopic(Record):
+    title: str
+    state: Literal["mentioned", "not_found", "not_checked"]
+    span_ids: list[str] = Field(default_factory=list)
+    next_step: str
+
+
 class Assessment(Record):
     id: str = Field(default_factory=uid)
     version: int
@@ -173,6 +182,7 @@ class Assessment(Record):
     status: Literal["complete", "partial", "cancelled"] = "partial"
     headline: str
     findings: list[Finding] = Field(default_factory=list)
+    website_topics: list[WebsiteTopic] = Field(default_factory=list)
     questions: list[str] = Field(default_factory=list)
     checks: list[Check] = Field(default_factory=list)
     usage: Usage = Field(default_factory=Usage)
@@ -213,6 +223,9 @@ class Case(Record):
             if not claim.span_ids or any(i not in spans for i in claim.span_ids):
                 raise ValueError("Invalid claim evidence")
         for assessment in self.assessments:
+            for topic in assessment.website_topics:
+                if any(i not in spans for i in topic.span_ids):
+                    raise ValueError("Invalid website topic evidence")
             for finding in assessment.findings:
                 if not finding.span_ids or any(
                     i not in spans for i in finding.span_ids + finding.opposing_span_ids

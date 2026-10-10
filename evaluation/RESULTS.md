@@ -38,3 +38,11 @@ The wheel was unpacked into an isolated package directory and imported from ther
 The generated inventory records 79 third-party distributions and 110 bundled notice files. All distributions expose license metadata; dnspython, pypdfium2 and Streamlit had no individually exposed bundled notice file in the inspected wheel inventory. This remains a target-platform distribution-review item, not a completed legal audit. PDFium binary notices found in the distribution are preserved where exposed.
 
 The OCI deployment has not been built/run on a hosting provider. Authentication, persistent disk, egress and hosted retention behavior remain unverified. Public anonymous deployment is outside this release.
+# Follow-up validation — 10 October 2026
+
+- Full offline suite after website/references changes: **199 passed in 11.27 seconds**. Ruff check and formatting passed.
+- Five provided-reference records validate; URL routing, lookalike rejection, ambiguous phrase matching, exact quotation validation, report provenance and the Streamlit reference/compare/model-card flow are covered. These are not five authenticated company investigations.
+- Actual browser check: entering `https://internpe.in/` with the reference option enabled opened its supplied-text review, with unperformed OCR/AI/authentication disclosed.
+- Separate network smoke: the normal no-key pipeline fetched four InternPE HTML pages in **8.29 seconds**, passed DNS/TLS checks and made **zero model calls**. This was a retrieval/assembly check, not an authenticity determination. The original failure was reproduced under restricted networking and did not reproduce with normal outbound access.
+- Built a wheel; isolated installed-layout verification loaded all five bundled reference records and passed 30/30 held-out deterministic rule fixtures.
+- Live commercial search, Groq inference, model-quality evaluation, original-image OCR for the five references, and registry/issuer authentication remain unperformed.

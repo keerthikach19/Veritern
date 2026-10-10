@@ -1,6 +1,7 @@
 import asyncio
 import ipaddress
 import socket
+import zlib
 from html.parser import HTMLParser
 from urllib.parse import urljoin, urlsplit
 from urllib.robotparser import RobotFileParser
@@ -20,6 +21,17 @@ RESTRICTED = {"linkedin.com", "glassdoor.com", "reddit.com"}
 
 class UnsafeDestination(ValueError):
     pass
+
+
+class RobotsUnavailable(Exception):
+    pass
+
+
+def redirect_url(current: str, location: str) -> str:
+    try:
+        return normalize_url(urljoin(current, location))
+    except ValueError as exc:
+        raise UnsafeDestination("Unsafe redirect destination") from exc
 
 
 async def public_addresses(host: str, port: int) -> list[str]:
@@ -48,9 +60,18 @@ class PublicBackend(httpcore.AsyncNetworkBackend):
         async with asyncio.timeout(timeout or 12):
             addresses = await public_addresses(host, port)
             # Numeric literal passed to the socket connector: no second hostname DNS lookup.
-            return await self.backend.connect_tcp(
-                addresses[0], port, timeout, local_address, socket_options
-            )
+            for i, address in enumerate(addresses):
+                try:
+                    return await self.backend.connect_tcp(
+                        address,
+                        port,
+                        (timeout or 12) / len(addresses),
+                        local_address,
+                        socket_options,
+                    )
+                except (httpcore.ConnectError, httpcore.ConnectTimeout, OSError):
+                    if i == len(addresses) - 1:
+                        raise
 
     async def connect_unix_socket(self, *args, **kwargs):
         raise UnsafeDestination("Unix sockets are disabled")
@@ -76,43 +97,124 @@ class Links(HTMLParser):
             self.hrefs.extend(v for k, v in attrs if k == "href" and v)
 
 
+class CompanyText(HTMLParser):
+    """Preserve footer/contact text that article extractors intentionally discard."""
+
+    ignored_tags = {"head", "script", "style", "noscript", "template", "svg", "nav", "form"}
+    block_tags = {
+        "p",
+        "div",
+        "section",
+        "article",
+        "footer",
+        "li",
+        "br",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "tr",
+    }
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.ignored = []
+        self.parts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self.ignored_tags:
+            self.ignored.append(tag)
+        if not self.ignored and tag in self.block_tags:
+            self.parts.append("\n")
+
+    def handle_endtag(self, tag):
+        if tag in self.ignored:
+            self.ignored.remove(tag)
+        if not self.ignored and tag in self.block_tags:
+            self.parts.append("\n")
+
+    def handle_data(self, data):
+        if not self.ignored:
+            self.parts.append(data)
+
+    def text(self):
+        return "\n".join(
+            line for raw in "".join(self.parts).splitlines() if (line := " ".join(raw.split()))
+        )
+
+
 class Fetcher:
     def __init__(self, settings: Settings, transport=None):
         self.settings = settings
         self.transport = transport
         self.host_locks: dict[str, asyncio.Lock] = {}
-        self.robots: dict[str, RobotFileParser | bool] = {}
+        self.robots: dict[str, RobotFileParser | bool | str] = {}
 
     async def _read(self, client, url, max_bytes):
         async with client.stream("GET", url) as response:
-            # Identity encoding prevents decompression bombs. Refuse servers ignoring it.
-            if response.headers.get("content-encoding", "identity").lower() not in ("identity", ""):
-                raise ValueError("Compressed response unsupported")
+            encoding = response.headers.get("content-encoding", "identity").lower()
+            if encoding not in ("identity", "", "gzip"):
+                raise ValueError("Server used an unsupported content encoding")
             if int(response.headers.get("content-length", "0")) > max_bytes:
                 raise ValueError("Response exceeds byte budget")
             data = bytearray()
-            async for chunk in response.aiter_bytes():
-                data.extend(chunk)
+            decoder = zlib.decompressobj(16 + zlib.MAX_WBITS) if encoding == "gzip" else None
+            # Bound decompression itself, not just its output after allocation.
+            wire_bytes = 0
+            chunks = (
+                response.aiter_raw() if not response.is_stream_consumed else response.aiter_bytes()
+            )
+            if response.is_stream_consumed:
+                decoder = None  # Mock/preloaded responses have already been decoded by HTTPX.
+            async for chunk in chunks:
+                wire_bytes += len(chunk)
+                if wire_bytes > max_bytes:
+                    raise ValueError("Response exceeds byte budget")
+                data.extend(
+                    decoder.decompress(chunk, max_bytes - len(data) + 1) if decoder else chunk
+                )
                 if len(data) > max_bytes:
                     raise ValueError("Response exceeds byte budget")
+            if decoder and (not decoder.eof or decoder.unused_data):
+                raise ValueError("Incomplete or concatenated gzip response")
             return response, bytes(data)
 
     async def _allowed(self, client, url):
         origin = str(httpx.URL(url).copy_with(path="/robots.txt", query=None, fragment=None))
         if origin not in self.robots:
             try:
-                response, raw = await self._read(client, origin, 200000)
-                if response.status_code == 404:
+                current = origin
+                for hop in range(6):
+                    response, raw = await self._read(client, current, 512000)
+                    if not response.is_redirect:
+                        break
+                    if hop == 5 or not response.headers.get("location"):
+                        raise RobotsUnavailable("Robots policy redirect limit reached")
+                    current = redirect_url(current, response.headers["location"])
+                    if domain(current) in RESTRICTED:
+                        raise RobotsUnavailable("Robots policy redirected to a restricted platform")
+                if response.status_code in (404, 410):
                     self.robots[origin] = True
                 elif response.status_code != 200:
-                    self.robots[origin] = False
+                    raise RobotsUnavailable(f"Robots policy returned HTTP {response.status_code}")
                 else:
+                    if "<html" in raw[:1024].decode("utf-8", errors="replace").lower():
+                        raise RobotsUnavailable("Robots policy returned HTML instead of rules")
                     parser = RobotFileParser()
                     parser.parse(raw.decode("utf-8", errors="replace").splitlines())
                     self.robots[origin] = parser
-            except (httpx.HTTPError, ValueError, OSError):
-                self.robots[origin] = False
+            except UnsafeDestination:
+                raise
+            except (RobotsUnavailable, ValueError, zlib.error) as exc:
+                self.robots[origin] = str(exc)
+            except (httpx.HTTPError, httpcore.NetworkError, OSError):
+                self.robots[origin] = (
+                    "Could not connect to read robots.txt. Check this app's internet access; "
+                    "this is not a website blocking verdict"
+                )
         policy = self.robots[origin]
+        if isinstance(policy, str):
+            raise RobotsUnavailable(policy)
         return policy if isinstance(policy, bool) else policy.can_fetch("Veritern", url)
 
     async def fetch(self, url: str, target_domain: str) -> tuple[Source, list[str]]:
@@ -149,7 +251,7 @@ class Fetcher:
                         async with self.host_locks.setdefault(host, asyncio.Lock()):
                             if not await self._allowed(client, url):
                                 source.access = Access.ROBOTS
-                                source.note = "Robots disallow or policy could not be checked"
+                                source.note = "The site's robots.txt explicitly disallows this path for Veritern"
                                 return source, []
                             policy = self.robots.get(
                                 str(
@@ -168,7 +270,7 @@ class Fetcher:
                                 client, url, self.settings.fetch_max_bytes
                             )
                         if response.is_redirect:
-                            url = normalize_url(urljoin(url, response.headers.get("location", "")))
+                            url = redirect_url(url, response.headers.get("location", ""))
                             if domain(url) in RESTRICTED:
                                 source.access = Access.BLOCKED
                                 return source, []
@@ -199,6 +301,12 @@ class Fetcher:
                             )
                             or ""
                         )
+                        if ctype != "text/plain" and domain(url) == target_domain:
+                            # Article extraction often drops company identity/contact footers.
+                            # Keep the site's cleaned body text for a company review instead.
+                            body = CompanyText()
+                            body.feed(html)
+                            text = body.text() or text
                         source.text = text[:60000]
                         source.truncated = len(text) > 60000
                         source.access = (
@@ -206,8 +314,9 @@ class Fetcher:
                         )
                         source.scope_confirmed = domain(url) == target_domain
                         source.kind = "official" if source.scope_confirmed else "third_party"
-                        if domain(url) != target_domain and source.publisher != domain(source.url):
-                            source.note = "Redirect needs identity review"
+                        source.note = "Public page retrieved; website statements are self-published and unverified"
+                        if source.access == Access.UNSUPPORTED:
+                            source.note = "No readable page text found; the page may require JavaScript or be an access challenge"
                         if domain(url) != target_domain:
                             source.note = (
                                 "Third-party scope requires explicit domain/program mention"
@@ -228,17 +337,48 @@ class Fetcher:
                                         "fees",
                                         "about",
                                         "partner",
+                                        "contact",
+                                        "refund",
+                                        "pricing",
                                     )
                                 ):
                                     links.append(candidate)
                             except ValueError:
                                 pass
-                        return source, list(dict.fromkeys(links))[:6]
+                        links = list(dict.fromkeys(links))
+                        links.sort(
+                            key=lambda item: (
+                                not any(
+                                    word in item.lower()
+                                    for word in (
+                                        "about",
+                                        "contact",
+                                        "terms",
+                                        "fee",
+                                        "refund",
+                                        "faq",
+                                    )
+                                )
+                            )
+                        )
+                        return source, links[:6]
                     raise ValueError("Redirect limit reached")
         except (TimeoutError, httpx.TimeoutException):
             source.access = Access.TIMEOUT
             source.note = "Fetch deadline reached"
-        except (ValueError, OSError, httpx.HTTPError, httpcore.NetworkError):
+        except RobotsUnavailable as exc:
+            source.access = Access.ROBOTS_UNAVAILABLE
+            source.note = (
+                str(exc)
+                + ". Page fetching paused until the policy can be read. No inference about legitimacy."
+            )
+        except UnsafeDestination:
             source.access = Access.BLOCKED
-            source.note = "Fetch failed safety, format, or connection checks"
+            source.note = "Destination rejected by public-network safety checks"
+        except (ValueError, zlib.error) as exc:
+            source.access = Access.UNSUPPORTED
+            source.note = str(exc)
+        except (OSError, httpx.HTTPError, httpcore.NetworkError):
+            source.access = Access.NETWORK
+            source.note = "Connection failed from this app. Check internet access, DNS and TLS; the site was not verified or judged blocked"
         return source, []

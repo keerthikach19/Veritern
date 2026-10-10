@@ -6,8 +6,15 @@ Veritern is a local internship due-diligence application. Start with a company w
 
 It is **not a scam detector**. There are no scam percentages, criminal labels, or verified-safe badges. Identity, experience, marketing/partnerships, and fees/compensation remain separate.
 
+## Five-company presentation
+
+Set `REFERENCE_CASES_ENABLED=true` in local `.env`, restart, and enter an InternPE, Internship Studio, Oasis Infobyte, TCS or Wipro URL. The app opens a reproducible review of the supplied reference text, including exact phrases, attributed observations, questions, comparison and provenance. Original images were not supplied and no AI/OCR/authentication is claimed for these reports. Wipro remains unverified rather than receiving a genuine badge. See [reference cases and evidence mapping](docs/REFERENCE_CASES.md).
+
+This setting requires no API key. A missing `.env` does **not** mean tokens ran out: the app defaults to basic website review and states which external services are unconfigured.
+
 ## What works
 
+- Without API keys: public DNS/TLS checks, readable company pages (including identity/contact footers), source-linked topic excerpts and independent-verification links. The UI explicitly calls this a basic review; website statements do not verify the business.
 - Company URL or name entry with explicit website confirmation/candidate selection.
 - Serper (default), Brave, optional privately operated SearXNG, and manual discovery adapters; no hidden fallback.
 - Concurrent public HTML/text retrieval with robots handling, validated connection addresses, redirect checks, bounded sizes/deadlines, and public page caching.
@@ -36,7 +43,7 @@ Copy-Item .env.example .env
 .\.venv-local\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1
 ```
 
-Open the localhost URL printed by Streamlit. Choose **Try a fictional example** to use the app without credentials. `scripts/run.ps1 -Demo` is also available. This workspace uses `.venv-local` because the first cache-hardlinked `.venv` hit managed Windows permission errors; no global permissions were changed.
+Open the localhost URL printed by Streamlit. A URL can run a basic review without credentials. Fictional examples are also available without network access. `scripts/run.ps1 -Demo` opens those examples. This workspace uses `.venv-local` because the first cache-hardlinked `.venv` hit managed Windows permission errors; no global permissions were changed. Start the server in a terminal with internet access: a restricted agent process can serve localhost while failing every external fetch.
 
 ## macOS / Linux
 

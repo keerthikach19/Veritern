@@ -1,0 +1,92 @@
+[
+  {
+    "id": "internpe",
+    "company": "InternPE",
+    "domains": ["internpe.in"],
+    "url": "https://internpe.in/",
+    "supplied_on": "2026-10-10",
+    "source_type": "provided_reference_text",
+    "reference_text": "InternPE\nIPI#88816\nInternship Domain:\nvaluable learning opportunity for you\nIt's 4 WEEKS program\nhttps://internpe.in/\nHr@internpe.in\nLET'S START\nWeb Development, 05/10/2026-01/11/2026 (4 WEEKS program).\nPositive: email domain matches website; QR/link https://internpe.in/verify.html (fetch and report whether it works; do not assume).\nISO 9001:2015, MSME, AICTE logos without numbers.\nMissing: letter issue date, stipend/unpaid statement, printed signatory name.\nSource image is a social-media screenshot with UI overlays.",
+    "identifying_phrases": ["InternPE", "IPI#88816", "Internship Domain:", "valuable learning opportunity for you", "It's 4 WEEKS program", "https://internpe.in/", "Hr@internpe.in", "LET'S START"],
+    "fields": {"Role / program": "Web Development", "Reference": "IPI#88816 (as supplied; original image unavailable)", "Program dates": "05/10/2026–01/11/2026 (format unverified)", "Duration": "4 weeks", "Compensation": "Not provided in the reference", "Contact domain": "internpe.in"},
+    "notes": [
+      {"title": "Certification claims need confirmation", "category": "clarification", "quote": "ISO 9001:2015, MSME, AICTE logos without numbers.", "explanation": "The supplied notes describe badges without supporting numbers. No logo was inspected and no issuing authority was contacted."},
+      {"title": "Core offer terms need clarification", "category": "clarification", "quote": "Missing: letter issue date, stipend/unpaid statement, printed signatory name.", "explanation": "These omissions are reported in the supplied notes. Ask for the complete dated offer and compensation terms; missing wording alone does not establish fraud."},
+      {"title": "Contact domain is consistent in the reference", "category": "positive", "quote": "Hr@internpe.in", "explanation": "The supplied email and URL use internpe.in. Matching text does not authenticate an email or the issuer."},
+      {"title": "Original document unavailable", "category": "limitation", "quote": "Source image is a social-media screenshot with UI overlays.", "explanation": "The screenshot was described but not supplied. OCR, image inspection and verification-link checks did not run."}
+    ],
+    "questions": ["Who signs and authorizes this exact offer?", "Is the program paid, unpaid or paid training, and what are all charges?", "What are the badge registration numbers and official verification pages?", "Who supervises the four weeks, and what feedback is delivered?", "Can the issuer confirm this reference number through an independently obtained contact?"]
+  },
+  {
+    "id": "internship_studio",
+    "company": "Internship Studio",
+    "domains": ["internshipstudio.com"],
+    "url": "https://internshipstudio.com/",
+    "supplied_on": "2026-10-10",
+    "source_type": "provided_reference_text",
+    "reference_text": "internship studio\nCommon Internship Test (CIT)\nTraining & Internship Certificate\nInternship Coordinator\nwww.internshipstudio.com\nsuccessful completion of the training course and submission of the final project\nOur training sessions\nDated 30th July 2024, Java Internship, 6 months from 16th August 2024, signed Internship Coordinator, Pune address, www.internshipstudio.com.\nMissing: stipend/unpaid statement, contact email/phone, CIN.\nPositives: named coordinator, physical address, consistent website domain.\nSource image has a video-caption overlay.",
+    "identifying_phrases": ["internship studio", "Common Internship Test (CIT)", "Training & Internship Certificate", "Internship Coordinator", "www.internshipstudio.com", "successful completion of the training course and submission of the final project"],
+    "fields": {"Role / program": "Java Internship", "Issue date": "30 July 2024 (as supplied)", "Start date": "16 August 2024 (as supplied)", "Duration": "6 months", "Compensation": "Not provided in the reference", "Location": "Pune address described; not independently checked"},
+    "notes": [
+      {"title": "Training versus employment needs clarification", "category": "clarification", "quote": "successful completion of the training course and submission of the final project", "explanation": "The supplied wording describes course and project completion. Training can be legitimate; establish whether this is employment or an educational program."},
+      {"title": "Compensation and contact terms are incomplete", "category": "clarification", "quote": "Missing: stipend/unpaid statement, contact email/phone, CIN.", "explanation": "The reference notes report missing details. A CIN is only applicable to the relevant entity type; its absence alone is not a fraud indicator."},
+      {"title": "Defined program dates in the reference", "category": "positive", "quote": "Dated 30th July 2024, Java Internship, 6 months from 16th August 2024", "explanation": "These are concrete terms to confirm with the issuer. They have not been checked against an original document."},
+      {"title": "Certificate conditions are stated", "category": "positive", "quote": "Training & Internship Certificate", "explanation": "The reference identifies the certificate type. Its wording is not evidence of accreditation or employer recognition."}
+    ],
+    "questions": ["Is this a training course or a role performing work for an employer?", "What are the total charges, refund policy and any stipend?", "Who is the supervisor and which team will review the work?", "What must be completed to obtain each certificate?", "Can the coordinator confirm the exact dates and provide full written terms?"]
+  },
+  {
+    "id": "oasis_infobyte",
+    "company": "Oasis Infobyte",
+    "domains": ["oasisinfobyte.com", "oasisinfobyte.in"],
+    "url": "https://www.oasisinfobyte.com/",
+    "supplied_on": "2026-10-10",
+    "source_type": "provided_reference_text",
+    "reference_text": "OASIS INFOBYTE\nOIB/SIP12907\nWeb Development and Designing\nlearning opportunity for you\nTeam Oasis Infobyte\ncontact@oasisinfobyte.in\nwww.oasisinfobyte.com\nINTERNSHIP OFFER LETTER\nRef OIB/SIP12907, dated 7/2/2022, Web Development and Designing in our fellowship.\nEmail contact@oasisinfobyte.in vs website www.oasisinfobyte.com: domain mismatch.\nEmblem of India and MSME logo, no registration number or verification link.\nMissing: stipend/unpaid statement, start/end dates or duration, named signatory, postal address, phone, CIN.\nyou will acknowledge your obligation to perform all work allocated to you\nClosing paragraph near-duplicates InternPe's.",
+    "identifying_phrases": ["OASIS INFOBYTE", "OIB/SIP12907", "Web Development and Designing", "learning opportunity for you", "Team Oasis Infobyte", "contact@oasisinfobyte.in", "www.oasisinfobyte.com", "INTERNSHIP OFFER LETTER"],
+    "fields": {"Role / program": "Web Development and Designing", "Reference": "OIB/SIP12907", "Issue date": "7/2/2022 (format unverified)", "Duration": "Not provided in the reference", "Compensation": "Not provided in the reference", "Email / website domains": "oasisinfobyte.in / oasisinfobyte.com"},
+    "notes": [
+      {"title": "Different email and website domains", "category": "clarification", "quote": "Email contact@oasisinfobyte.in vs website www.oasisinfobyte.com: domain mismatch.", "explanation": "The two supplied domains differ. An organization can own both; their common ownership and authority have not been verified."},
+      {"title": "Certification claims need confirmation", "category": "clarification", "quote": "Emblem of India and MSME logo, no registration number or verification link.", "explanation": "This is an observation supplied in the reference notes, not an image analysis or registry check performed here."},
+      {"title": "Program terms are incomplete in the reference", "category": "clarification", "quote": "Missing: stipend/unpaid statement, start/end dates or duration, named signatory, postal address, phone, CIN.", "explanation": "Request the complete original and program-specific terms. These omissions have not been independently established."},
+      {"title": "Template similarity was not measured", "category": "limitation", "quote": "Closing paragraph near-duplicates InternPe's.", "explanation": "This is a supplied observation. The full letters are unavailable, so no similarity percentage or plagiarism conclusion is produced."}
+    ],
+    "questions": ["Can the operator confirm ownership of both the .in and .com domains?", "What are the start/end dates and stipend or unpaid terms?", "Who signs the offer and supervises the program?", "What official records support the badges described in the reference?", "What are all charges and certificate completion conditions?"]
+  },
+  {
+    "id": "tcs",
+    "company": "Tata Consultancy Services",
+    "domains": ["tcs.com"],
+    "url": "https://www.tcs.com/careers",
+    "supplied_on": "2026-10-10",
+    "source_type": "provided_reference_text",
+    "reference_text": "Tata Consultancy Services\nTATA CONSULTANCY PVT.LTD.\nFor Tata Consultancy Services Ltd.\nCIN:L22210MH1995PLC084781\nglobal.marketing@tcs.com\nOffer of Appointment Letter\nYour salary will be Rs 25,000/- Net earning\nassets allocated to you needs to be submitted before exiting\nOffer of Appointment Letter dated 02/Nov/2022, position SRO, join 6 Nov 2022.\nselected at our client TATA CONSULTANCY PVT.LTD.\nletterhead Private Limited vs signature Ltd.\naddressee differs from the I Accept signatory\nPositives: email and website domains consistent; no payment request; CIN present (link to MCA, do NOT assert a match unless verified).\nIt is a job appointment, not an internship.",
+    "identifying_phrases": ["Tata Consultancy Services", "TATA CONSULTANCY PVT.LTD.", "For Tata Consultancy Services Ltd.", "CIN:L22210MH1995PLC084781", "global.marketing@tcs.com", "Offer of Appointment Letter", "Your salary will be Rs 25,000/- Net earning", "assets allocated to you needs to be submitted before exiting"],
+    "fields": {"Document type": "Job appointment (as described)", "Role": "SRO", "Issue date": "2 November 2022", "Joining date": "6 November 2022", "Compensation": "Rs 25,000/- Net earning (provided wording)", "Printed CIN": "L22210MH1995PLC084781 — not registry-verified"},
+    "notes": [
+      {"title": "Issuer–client relationship is unclear", "category": "clarification", "quote": "selected at our client TATA CONSULTANCY PVT.LTD.", "explanation": "The supplied reference describes a sender claiming this brand while also describing it as a client. Establish whether an authorized staffing agency issued the offer."},
+      {"title": "Entity wording differs", "category": "clarification", "quote": "letterhead Private Limited vs signature Ltd.", "explanation": "The supplied notes describe inconsistent legal-name wording. Verify the actual issuer against official company records; this is not an accusation about TCS."},
+      {"title": "Acceptance identity needs review", "category": "clarification", "quote": "addressee differs from the I Accept signatory", "explanation": "The reference reports a name mismatch. Names are omitted, and the original letter is required to confirm the issue."},
+      {"title": "Structured employment details are supplied", "category": "positive", "quote": "Your salary will be Rs 25,000/- Net earning", "explanation": "A stated salary is a concrete term to verify. Neither a printed CIN nor a matching domain authenticates the letter."}
+    ],
+    "questions": ["Which legal entity is the employer and which is the client?", "Can TCS recruitment confirm this offer or the issuing agency?", "Why do the letterhead and signature use different entity forms?", "Can the issuer supply a corrected acceptance page for the intended recipient?", "Can official recruitment confirm the role, salary, joining date and contact channel?"]
+  },
+  {
+    "id": "wipro",
+    "company": "Wipro",
+    "domains": ["wipro.com"],
+    "url": "https://careers.wipro.com/",
+    "supplied_on": "2026-10-10",
+    "source_type": "provided_reference_text",
+    "reference_text": "Welcome to Wipro Limited\nData Management Specialist\nYour employment with Wipro Limited India will commence on\nprobation for a period of 12 months\nAnnexure III - Salary Offer Sheet\nVariable Pay\n2. Other Benefits\nDated September 16, 2024, Data Management Specialist, Hyderabad, commencing 8-Oct-2024.\nOnly page 1 provided (cuts off at 2. Other Benefits); no sender email, CIN or signatory visible; Annexures III and VI not provided.\nNo payment request. Conditions to read, not red flags: 12-month probation, transfer clause, 24x7 shifts incl. night shift, conditional on degree requirements.",
+    "identifying_phrases": ["Welcome to Wipro Limited", "Data Management Specialist", "Your employment with Wipro Limited India will commence on", "probation for a period of 12 months", "Annexure III - Salary Offer Sheet", "Variable Pay", "2. Other Benefits"],
+    "fields": {"Role": "Data Management Specialist", "Location": "Hyderabad", "Issue date": "16 September 2024", "Joining date": "8 October 2024", "Probation": "12 months", "Compensation": "Salary annexure referenced; amounts not provided"},
+    "notes": [
+      {"title": "Defined role and joining date", "category": "positive", "quote": "Dated September 16, 2024, Data Management Specialist, Hyderabad, commencing 8-Oct-2024.", "explanation": "The supplied reference contains specific employment terms. These are positive structural indicators, not authentication."},
+      {"title": "Compensation structure is referenced", "category": "positive", "quote": "Annexure III - Salary Offer Sheet", "explanation": "The reference mentions a salary annexure, but its contents were not supplied. No salary amount is inferred."},
+      {"title": "Conditions need informed review", "category": "positive", "quote": "probation for a period of 12 months", "explanation": "Probation and shift conditions are terms to understand, not standalone fraud indicators."},
+      {"title": "Partial document and no authentication", "category": "limitation", "quote": "Only page 1 provided (cuts off at 2. Other Benefits); no sender email, CIN or signatory visible; Annexures III and VI not provided.", "explanation": "The supplied notes describe one page; no original page was actually supplied to this app. Remaining terms and issuer authenticity are unknown."}
+    ],
+    "questions": ["Can Wipro's official recruitment channel confirm the exact offer?", "Can you provide all pages and Annexures III and VI?", "What are the fixed and variable compensation conditions?", "What are the probation, transfer and shift obligations?", "Who is the authorized signatory and what official channel confirms the joining date?"]
+  }
+]
