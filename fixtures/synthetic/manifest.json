@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "type": "pre-extracted fictional rule-regression facts",
   "human_reviewers": 0,
   "families": {
@@ -10,9 +10,9 @@
       "tasks",
       "conditional",
       "mentorship",
-      "partner",
-      "unpaid_unknown",
-      "unpaid_due",
+      "batch_mismatch",
+      "benefit_mismatch",
+      "ocr_unreviewed",
       "training"
     ],
     "heldout": [
@@ -23,9 +23,9 @@
       "pressure",
       "business_test",
       "changed_terms",
-      "batch_mismatch",
-      "benefit_mismatch",
-      "ocr_unreviewed"
+      "partner",
+      "unpaid_unknown",
+      "unpaid_due"
     ]
   },
   "files": {
@@ -47,15 +47,15 @@
     "fixtures/synthetic/development/mentorship-1.json": "887982c964fb74d4a66cd2bf448ac6a9ea589388af7e054783af65e08e53a7e3",
     "fixtures/synthetic/development/mentorship-2.json": "602583bd7cf6816654eb6a9c485d685d0665d23f2d8f668f1dd6c50a0f5a767d",
     "fixtures/synthetic/development/mentorship-3.json": "006efafe970f1a31d71eb286d9a281d4c5458309bb3b4e59aaa5bae2386879c3",
-    "fixtures/synthetic/development/partner-1.json": "370834d3600f3661973c03fcceec548e18d025b4bed7f19c4aa91cd4c3c4354a",
-    "fixtures/synthetic/development/partner-2.json": "0662345eb1bca1185f8313a973adee8b504accf832aea7022f5c3d064049365f",
-    "fixtures/synthetic/development/partner-3.json": "057318961029dd2b1b9352f4bf1d644479e545f27eb7dc0c51b8892580ef7e81",
-    "fixtures/synthetic/development/unpaid_unknown-1.json": "900ba2c8ada00588b2c414897ac9d92b77867c826df698eb52bf45894f99ee35",
-    "fixtures/synthetic/development/unpaid_unknown-2.json": "54d2c95372a51a947cf43e09f2800eaf263693cb61ffadbd97c05c3758fef49c",
-    "fixtures/synthetic/development/unpaid_unknown-3.json": "196e661fe290a446ba8c4595c056782b8c40cea221a4345e435b170682e7b077",
-    "fixtures/synthetic/development/unpaid_due-1.json": "48906088e2f1fe0840d893de7b760634ebd12476a2ff82c58af7bdfb97cb0a32",
-    "fixtures/synthetic/development/unpaid_due-2.json": "0a451a2d43a82e224ae587c02566c92f9653288e30ab1a317966cdc517f81de5",
-    "fixtures/synthetic/development/unpaid_due-3.json": "a81076e6bc39b53115fb6740d4ebc299121de44e75230d0de8f69c15d034410c",
+    "fixtures/synthetic/heldout/partner-1.json": "370834d3600f3661973c03fcceec548e18d025b4bed7f19c4aa91cd4c3c4354a",
+    "fixtures/synthetic/heldout/partner-2.json": "0662345eb1bca1185f8313a973adee8b504accf832aea7022f5c3d064049365f",
+    "fixtures/synthetic/heldout/partner-3.json": "057318961029dd2b1b9352f4bf1d644479e545f27eb7dc0c51b8892580ef7e81",
+    "fixtures/synthetic/heldout/unpaid_unknown-1.json": "900ba2c8ada00588b2c414897ac9d92b77867c826df698eb52bf45894f99ee35",
+    "fixtures/synthetic/heldout/unpaid_unknown-2.json": "54d2c95372a51a947cf43e09f2800eaf263693cb61ffadbd97c05c3758fef49c",
+    "fixtures/synthetic/heldout/unpaid_unknown-3.json": "196e661fe290a446ba8c4595c056782b8c40cea221a4345e435b170682e7b077",
+    "fixtures/synthetic/heldout/unpaid_due-1.json": "48906088e2f1fe0840d893de7b760634ebd12476a2ff82c58af7bdfb97cb0a32",
+    "fixtures/synthetic/heldout/unpaid_due-2.json": "0a451a2d43a82e224ae587c02566c92f9653288e30ab1a317966cdc517f81de5",
+    "fixtures/synthetic/heldout/unpaid_due-3.json": "a81076e6bc39b53115fb6740d4ebc299121de44e75230d0de8f69c15d034410c",
     "fixtures/synthetic/development/training-1.json": "08e26e89a4f5442b1a94dccd37aff301d91e76f63a5023fa76c0e5e598261008",
     "fixtures/synthetic/development/training-2.json": "ffa9db5804747ced55f47f649397df80693072bf6d1a39921a653d3bb7aa1e2b",
     "fixtures/synthetic/development/training-3.json": "4c6c26ecd6e1b6aae2650406e336a33bca3cdd7a4ed8de5d4e4493176f6a8eb9",
@@ -80,14 +80,14 @@
     "fixtures/synthetic/heldout/changed_terms-1.json": "103470b7dca4d49b2cb3b69a3069225d64ce9657d8a595bb8de601eaf5bd7334",
     "fixtures/synthetic/heldout/changed_terms-2.json": "e20031cc8d9b8efa5680ecf9298925b05911cdd4b15fb9cb05f70bcd4d3eb11d",
     "fixtures/synthetic/heldout/changed_terms-3.json": "f87f6764908afa41127d8ff6198b14067853cebb5c3d44f87863e00d46975b4a",
-    "fixtures/synthetic/heldout/batch_mismatch-1.json": "120e789b987a338f2e7463e9f81a06e9efd5c8cf43dcf87ec2eee956f3bbc13c",
-    "fixtures/synthetic/heldout/batch_mismatch-2.json": "830c01cfaa036ab88460805f2a8efd0371cd57b393a1d29b45f571e816325b8e",
-    "fixtures/synthetic/heldout/batch_mismatch-3.json": "2981d64cec5f3909a7c8debe6cb38e8f7e3b2731db1c8e35186dcc023cfffd9e",
-    "fixtures/synthetic/heldout/benefit_mismatch-1.json": "73e6ca2a9194a92e2aaceb8aa57bf3c3399f9d15d436d1d667cc6f6abb3813c3",
-    "fixtures/synthetic/heldout/benefit_mismatch-2.json": "8dc25771aea066aedcc7636a4099c48a6e187ba7bc9c57f0e04e2f3f16986f0e",
-    "fixtures/synthetic/heldout/benefit_mismatch-3.json": "a9ebbca90b1187daf1cdc10010b77abeec899fd4b8920365be734cb334135ec2",
-    "fixtures/synthetic/heldout/ocr_unreviewed-1.json": "95a1ae106decebe7879cc7e2bbb18936bd167b097adc53e15b7cc013bd6e0a1b",
-    "fixtures/synthetic/heldout/ocr_unreviewed-2.json": "e0bddfd586efdc65645c2fdeb203a3a28b51875903dfa5ffda013cb814aea7b7",
-    "fixtures/synthetic/heldout/ocr_unreviewed-3.json": "398ab7f9f910be3d08b5230fb1e35a65f960b0620fb1b2b4de542062bfe6b695"
+    "fixtures/synthetic/development/batch_mismatch-1.json": "120e789b987a338f2e7463e9f81a06e9efd5c8cf43dcf87ec2eee956f3bbc13c",
+    "fixtures/synthetic/development/batch_mismatch-2.json": "830c01cfaa036ab88460805f2a8efd0371cd57b393a1d29b45f571e816325b8e",
+    "fixtures/synthetic/development/batch_mismatch-3.json": "2981d64cec5f3909a7c8debe6cb38e8f7e3b2731db1c8e35186dcc023cfffd9e",
+    "fixtures/synthetic/development/benefit_mismatch-1.json": "73e6ca2a9194a92e2aaceb8aa57bf3c3399f9d15d436d1d667cc6f6abb3813c3",
+    "fixtures/synthetic/development/benefit_mismatch-2.json": "8dc25771aea066aedcc7636a4099c48a6e187ba7bc9c57f0e04e2f3f16986f0e",
+    "fixtures/synthetic/development/benefit_mismatch-3.json": "a9ebbca90b1187daf1cdc10010b77abeec899fd4b8920365be734cb334135ec2",
+    "fixtures/synthetic/development/ocr_unreviewed-1.json": "95a1ae106decebe7879cc7e2bbb18936bd167b097adc53e15b7cc013bd6e0a1b",
+    "fixtures/synthetic/development/ocr_unreviewed-2.json": "e0bddfd586efdc65645c2fdeb203a3a28b51875903dfa5ffda013cb814aea7b7",
+    "fixtures/synthetic/development/ocr_unreviewed-3.json": "398ab7f9f910be3d08b5230fb1e35a65f960b0620fb1b2b4de542062bfe6b695"
   }
 }

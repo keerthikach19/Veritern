@@ -1,0 +1,10 @@
+# Privacy and retention
+
+- Search providers receive the confirmed public domain and neutral research terms. Company-name candidate search receives the name entered. Do not enter personal identifiers in the company field.
+- Groq receives selected public passages and only private text approved in the editable redaction preview. It never receives original uploaded images/files through this app. Groq is a proprietary hosted service; open model weights do not make hosting open source.
+- Regex redaction is best effort. Names, addresses, unusual IDs and signatures may survive. Review every preview; approval is specific to the displayed edited text. Provider retention follows the account's actual settings and [Groq data controls](https://console.groq.com/docs/your-data).
+- Raw files live in process/subprocess memory; OCR libraries may use temporary files during execution. Normal library cleanup removes these, but OS crashes cannot guarantee immediate deletion. No raw uploads are retained by the case repository.
+- SQLite and public caches are **not encrypted at rest**. Use OS access controls and full-disk encryption. Unsaved cases expire after 24 hours on startup/new-job/CLI cleanup; no deletion runs while the app is closed. Saved excerpts persist until deletion. A closed browser can leave an unsaved case until expiry.
+- Delete removes the logical case payload, derived evidence and local job content while retaining a content-free tombstone. SQLite/WAL and filesystem recovery may retain deleted bytes; deletion is not a forensic secure erase. Provider-side processing already performed cannot be undone by local deletion.
+- Shared cache contains only public fetched pages, never private uploads or private extraction results. Clear public cache separately. Case ownership is enforced in repository mutations; localhost saved-library access assumes a single trusted OS user.
+- Protected deployments disable private evidence. Public multi-tenant deployment, account authentication and remote database support are not implemented.

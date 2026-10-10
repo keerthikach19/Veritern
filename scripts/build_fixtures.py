@@ -23,9 +23,9 @@ FAMILIES = {
         "tasks",
         "conditional",
         "mentorship",
-        "partner",
-        "unpaid_unknown",
-        "unpaid_due",
+        "batch_mismatch",
+        "benefit_mismatch",
+        "ocr_unreviewed",
         "training",
     ],
     "heldout": [
@@ -36,9 +36,9 @@ FAMILIES = {
         "pressure",
         "business_test",
         "changed_terms",
-        "batch_mismatch",
-        "benefit_mismatch",
-        "ocr_unreviewed",
+        "partner",
+        "unpaid_unknown",
+        "unpaid_due",
     ],
 }
 EXPECTED = {
@@ -187,7 +187,7 @@ def build(family, variant):
 
 def main():
     manifest = {
-        "version": 1,
+        "version": 2,
         "type": "pre-extracted fictional rule-regression facts",
         "human_reviewers": 0,
         "families": FAMILIES,

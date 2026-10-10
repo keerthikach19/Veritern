@@ -1,0 +1,11 @@
+FROM python:3.13.7-slim
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 APP_ENV=protected APP_MODE=demo ENABLE_PRIVATE_UPLOADS=false STORAGE_DIR=/data EPHEMERAL_STORAGE=true
+WORKDIR /app
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . /app
+RUN pip install --no-cache-dir --no-deps . && useradd --create-home --uid 1000 app && mkdir -p /data && chown app:app /data
+USER app
+EXPOSE 7860
+HEALTHCHECK CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:7860/_stcore/health', timeout=3)"
+CMD ["streamlit", "run", "app.py", "--server.address", "0.0.0.0", "--server.port", "7860"]

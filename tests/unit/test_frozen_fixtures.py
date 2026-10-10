@@ -21,6 +21,9 @@ def test_frozen_case(path):
 def test_frozen_manifest_and_family_separation():
     manifest = json.loads((ROOT / "fixtures" / "synthetic" / "manifest.json").read_text())
     assert len(manifest["files"]) == 60
+    assert {"free_then_fee", "batch_mismatch", "benefit_mismatch", "ocr_unreviewed"} <= set(
+        manifest["families"]["development"]
+    )
     assert not set(manifest["families"]["development"]) & set(manifest["families"]["heldout"])
     for name, digest in manifest["files"].items():
         assert (

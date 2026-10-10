@@ -1,0 +1,741 @@
+[
+  {
+    "name": "altair",
+    "version": "6.3.0",
+    "license_metadata": "BSD License",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/altair__altair-6.3.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "annotated-types",
+    "version": "0.8.0",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/annotated-types__annotated_types-0.8.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "anyio",
+    "version": "4.15.1",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/anyio__anyio-4.15.1.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "attrs",
+    "version": "26.1.0",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/attrs__attrs-26.1.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "babel",
+    "version": "2.18.0",
+    "license_metadata": "BSD License",
+    "home_page": "https://babel.pocoo.org/",
+    "bundled_notices": [
+      "docs/licenses/babel__babel-2.18.0.dist-info_licenses_LICENSE",
+      "docs/licenses/babel__babel_locale-data_LICENSE.unicode"
+    ]
+  },
+  {
+    "name": "certifi",
+    "version": "2026.7.22",
+    "license_metadata": "Mozilla Public License 2.0 (MPL 2.0)",
+    "home_page": "https://github.com/certifi/python-certifi",
+    "bundled_notices": [
+      "docs/licenses/certifi__certifi-2026.7.22.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "charset-normalizer",
+    "version": "3.5.2",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/charset-normalizer__charset_normalizer-3.5.2.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "click",
+    "version": "8.5.0",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/click__click-8.5.0.dist-info_licenses_LICENSE.txt"
+    ]
+  },
+  {
+    "name": "colorama",
+    "version": "0.4.6",
+    "license_metadata": "BSD License",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/colorama__colorama-0.4.6.dist-info_licenses_LICENSE.txt"
+    ]
+  },
+  {
+    "name": "courlan",
+    "version": "1.4.0",
+    "license_metadata": "Apache-2.0",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/courlan__courlan-1.4.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "dateparser",
+    "version": "1.4.3",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/dateparser__dateparser-1.4.3.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "distro",
+    "version": "1.9.0",
+    "license_metadata": "Apache Software License",
+    "home_page": "https://github.com/python-distro/distro",
+    "bundled_notices": [
+      "docs/licenses/distro__distro-1.9.0.dist-info_LICENSE"
+    ]
+  },
+  {
+    "name": "dnspython",
+    "version": "2.9.0",
+    "license_metadata": "ISC",
+    "home_page": null,
+    "bundled_notices": []
+  },
+  {
+    "name": "filelock",
+    "version": "4.1.0",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/filelock__filelock-4.1.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "groq",
+    "version": "0.37.1",
+    "license_metadata": "Apache Software License",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/groq__groq-0.37.1.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "h11",
+    "version": "0.16.0",
+    "license_metadata": "MIT License",
+    "home_page": "https://github.com/python-hyper/h11",
+    "bundled_notices": [
+      "docs/licenses/h11__h11-0.16.0.dist-info_licenses_LICENSE.txt"
+    ]
+  },
+  {
+    "name": "htmldate",
+    "version": "1.11.0",
+    "license_metadata": "Apache-2.0",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/htmldate__htmldate-1.11.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "httpcore",
+    "version": "1.0.9",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/httpcore__httpcore-1.0.9.dist-info_licenses_LICENSE.md"
+    ]
+  },
+  {
+    "name": "httptools",
+    "version": "0.9.0",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/httptools__httptools-0.9.0.dist-info_licenses_LICENSE",
+      "docs/licenses/httptools__httptools-0.9.0.dist-info_licenses_vendor_http-parser_LICENSE-MIT",
+      "docs/licenses/httptools__httptools-0.9.0.dist-info_licenses_vendor_llhttp_LICENSE"
+    ]
+  },
+  {
+    "name": "httpx",
+    "version": "0.28.1",
+    "license_metadata": "BSD License",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/httpx__httpx-0.28.1.dist-info_licenses_LICENSE.md"
+    ]
+  },
+  {
+    "name": "idna",
+    "version": "3.20",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/idna__idna-3.20.dist-info_licenses_LICENSE.md"
+    ]
+  },
+  {
+    "name": "iniconfig",
+    "version": "2.3.1",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/iniconfig__iniconfig-2.3.1.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "itsdangerous",
+    "version": "2.2.0",
+    "license_metadata": "BSD License",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/itsdangerous__itsdangerous-2.2.0.dist-info_LICENSE.txt"
+    ]
+  },
+  {
+    "name": "Jinja2",
+    "version": "3.1.6",
+    "license_metadata": "BSD License",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/Jinja2__jinja2-3.1.6.dist-info_licenses_LICENSE.txt"
+    ]
+  },
+  {
+    "name": "jsonschema",
+    "version": "4.26.0",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/jsonschema__jsonschema-4.26.0.dist-info_licenses_COPYING"
+    ]
+  },
+  {
+    "name": "jsonschema-specifications",
+    "version": "2025.9.1",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/jsonschema-specifications__jsonschema_specifications-2025.9.1.dist-info_licenses_COPYING"
+    ]
+  },
+  {
+    "name": "jusText",
+    "version": "3.0.2",
+    "license_metadata": "BSD License",
+    "home_page": "https://github.com/miso-belica/jusText",
+    "bundled_notices": [
+      "docs/licenses/jusText__justext-3.0.2.dist-info_LICENSE.rst"
+    ]
+  },
+  {
+    "name": "lxml",
+    "version": "6.1.3",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": "https://lxml.de/",
+    "bundled_notices": [
+      "docs/licenses/lxml__lxml-6.1.3.dist-info_licenses_LICENSE.txt",
+      "docs/licenses/lxml__lxml-6.1.3.dist-info_licenses_LICENSES.txt"
+    ]
+  },
+  {
+    "name": "lxml_html_clean",
+    "version": "0.4.5",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": "https://github.com/fedora-python/lxml_html_clean/",
+    "bundled_notices": [
+      "docs/licenses/lxml_html_clean__lxml_html_clean-0.4.5.dist-info_licenses_LICENSE.txt"
+    ]
+  },
+  {
+    "name": "MarkupSafe",
+    "version": "3.0.4",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/MarkupSafe__markupsafe-3.0.4.dist-info_licenses_LICENSE.txt"
+    ]
+  },
+  {
+    "name": "narwhals",
+    "version": "2.27.1",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/narwhals__narwhals-2.27.1.dist-info_licenses_LICENSE.md"
+    ]
+  },
+  {
+    "name": "numpy",
+    "version": "2.5.3",
+    "license_metadata": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_LICENSE.txt",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy__core_include_numpy_libdivide_LICENSE.txt",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy__core_src_common_pythoncapi-compat_COPYING",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy__core_src_highway_LICENSE",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy__core_src_multiarray_dragon4_LICENSE.txt",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy__core_src_npysort_x86-simd-sort_LICENSE.md",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy__core_src_umath_svml_LICENSE",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy_fft_pocketfft_LICENSE.md",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy_linalg_lapack_lite_LICENSE.txt",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy_ma_LICENSE",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy_random_LICENSE.md",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy_random_src_distributions_LICENSE.md",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy_random_src_mt19937_LICENSE.md",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy_random_src_pcg64_LICENSE.md",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy_random_src_philox_LICENSE.md",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy_random_src_sfc64_LICENSE.md",
+      "docs/licenses/numpy__numpy-2.5.3.dist-info_licenses_numpy_random_src_splitmix64_LICENSE.md",
+      "docs/licenses/numpy__numpy__core_include_numpy_random_LICENSE.txt",
+      "docs/licenses/numpy__numpy_ma_LICENSE",
+      "docs/licenses/numpy__numpy_random_LICENSE.md"
+    ]
+  },
+  {
+    "name": "packaging",
+    "version": "26.3",
+    "license_metadata": "Apache-2.0 OR BSD-2-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/packaging__packaging-26.3.dist-info_licenses_LICENSE",
+      "docs/licenses/packaging__packaging-26.3.dist-info_licenses_LICENSE.APACHE",
+      "docs/licenses/packaging__packaging-26.3.dist-info_licenses_LICENSE.BSD"
+    ]
+  },
+  {
+    "name": "pandas",
+    "version": "3.0.6",
+    "license_metadata": "BSD License",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/pandas__pandas-3.0.6.dist-info_LICENSE"
+    ]
+  },
+  {
+    "name": "pillow",
+    "version": "12.3.0",
+    "license_metadata": "MIT-CMU",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/pillow__pillow-12.3.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "pip-licenses",
+    "version": "5.5.5",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/pip-licenses__pip_licenses-5.5.5.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "pluggy",
+    "version": "1.6.0",
+    "license_metadata": "MIT License",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/pluggy__pluggy-1.6.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "prettytable",
+    "version": "3.18.0",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/prettytable__prettytable-3.18.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "protobuf",
+    "version": "7.36.2",
+    "license_metadata": "3-Clause BSD License",
+    "home_page": "https://developers.google.com/protocol-buffers/",
+    "bundled_notices": [
+      "docs/licenses/protobuf__protobuf-7.36.2.dist-info_LICENSE"
+    ]
+  },
+  {
+    "name": "pyarrow",
+    "version": "25.0.1",
+    "license_metadata": "Apache-2.0",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/pyarrow__pyarrow-25.0.1.dist-info_licenses_LICENSE.txt",
+      "docs/licenses/pyarrow__pyarrow-25.0.1.dist-info_licenses_NOTICE.txt"
+    ]
+  },
+  {
+    "name": "pydantic",
+    "version": "2.14.0",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/pydantic__pydantic-2.14.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "pydantic-settings",
+    "version": "2.15.0",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/pydantic-settings__pydantic_settings-2.15.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "pydantic_core",
+    "version": "2.50.0",
+    "license_metadata": "MIT",
+    "home_page": "https://github.com/pydantic/pydantic",
+    "bundled_notices": [
+      "docs/licenses/pydantic_core__pydantic_core-2.50.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "pydeck",
+    "version": "0.9.3",
+    "license_metadata": "Apache License 2.0",
+    "home_page": "https://github.com/visgl/deck.gl/tree/master/bindings/pydeck",
+    "bundled_notices": [
+      "docs/licenses/pydeck__pydeck-0.9.3.dist-info_licenses_LICENSE.txt"
+    ]
+  },
+  {
+    "name": "Pygments",
+    "version": "2.21.0",
+    "license_metadata": "BSD-2-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/Pygments__pygments-2.21.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "pypdf",
+    "version": "6.20.0",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/pypdf__pypdf-6.20.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "pypdfium2",
+    "version": "5.14.0",
+    "license_metadata": "BSD-3-Clause, Apache-2.0, dependency licenses",
+    "home_page": "https://github.com/pypdfium2-team/pypdfium2",
+    "bundled_notices": []
+  },
+  {
+    "name": "pytesseract",
+    "version": "0.3.13",
+    "license_metadata": "Apache Software License",
+    "home_page": "https://github.com/madmaze/pytesseract",
+    "bundled_notices": [
+      "docs/licenses/pytesseract__pytesseract-0.3.13.dist-info_LICENSE"
+    ]
+  },
+  {
+    "name": "pytest",
+    "version": "9.1.1",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/pytest__pytest-9.1.1.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "pytest-asyncio",
+    "version": "1.4.0",
+    "license_metadata": "Apache-2.0",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/pytest-asyncio__pytest_asyncio-1.4.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "python-dateutil",
+    "version": "2.9.0.post0",
+    "license_metadata": "BSD License; Apache Software License",
+    "home_page": "https://github.com/dateutil/dateutil",
+    "bundled_notices": [
+      "docs/licenses/python-dateutil__python_dateutil-2.9.0.post0.dist-info_LICENSE"
+    ]
+  },
+  {
+    "name": "python-dotenv",
+    "version": "1.2.4",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/python-dotenv__python_dotenv-1.2.4.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "python-multipart",
+    "version": "0.0.32",
+    "license_metadata": "Apache-2.0",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/python-multipart__python_multipart-0.0.32.dist-info_licenses_LICENSE.txt"
+    ]
+  },
+  {
+    "name": "pytz",
+    "version": "2026.5",
+    "license_metadata": "MIT License",
+    "home_page": "http://pythonhosted.org/pytz",
+    "bundled_notices": [
+      "docs/licenses/pytz__pytz-2026.5.dist-info_LICENSE.txt"
+    ]
+  },
+  {
+    "name": "PyYAML",
+    "version": "6.0.3",
+    "license_metadata": "MIT License",
+    "home_page": "https://pyyaml.org/",
+    "bundled_notices": [
+      "docs/licenses/PyYAML__pyyaml-6.0.3.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "referencing",
+    "version": "0.37.0",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/referencing__referencing-0.37.0.dist-info_licenses_COPYING"
+    ]
+  },
+  {
+    "name": "regex",
+    "version": "2026.9.29",
+    "license_metadata": "Apache-2.0 AND CNRI-Python",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/regex__regex-2026.9.29.dist-info_licenses_LICENSE.txt"
+    ]
+  },
+  {
+    "name": "requests",
+    "version": "2.34.2",
+    "license_metadata": "Apache Software License",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/requests__requests-2.34.2.dist-info_licenses_LICENSE",
+      "docs/licenses/requests__requests-2.34.2.dist-info_licenses_NOTICE"
+    ]
+  },
+  {
+    "name": "requests-file",
+    "version": "3.0.1",
+    "license_metadata": "Apache Software License",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/requests-file__requests_file-3.0.1.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "respx",
+    "version": "0.22.0",
+    "license_metadata": "BSD License",
+    "home_page": "https://lundberg.github.io/respx/",
+    "bundled_notices": [
+      "docs/licenses/respx__respx-0.22.0.dist-info_LICENSE.md"
+    ]
+  },
+  {
+    "name": "rpds-py",
+    "version": "2026.9.1",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/rpds-py__rpds_py-2026.9.1.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "ruff",
+    "version": "0.17.0",
+    "license_metadata": "MIT",
+    "home_page": "https://docs.astral.sh/ruff",
+    "bundled_notices": [
+      "docs/licenses/ruff__ruff-0.17.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "six",
+    "version": "1.17.0",
+    "license_metadata": "MIT License",
+    "home_page": "https://github.com/benjaminp/six",
+    "bundled_notices": [
+      "docs/licenses/six__six-1.17.0.dist-info_LICENSE"
+    ]
+  },
+  {
+    "name": "sniffio",
+    "version": "1.3.1",
+    "license_metadata": "MIT License; Apache Software License",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/sniffio__sniffio-1.3.1.dist-info_LICENSE",
+      "docs/licenses/sniffio__sniffio-1.3.1.dist-info_LICENSE.APACHE2",
+      "docs/licenses/sniffio__sniffio-1.3.1.dist-info_LICENSE.MIT"
+    ]
+  },
+  {
+    "name": "starlette",
+    "version": "1.7.0",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/starlette__starlette-1.7.0.dist-info_licenses_LICENSE.md"
+    ]
+  },
+  {
+    "name": "streamlit",
+    "version": "1.65.0",
+    "license_metadata": "Apache-2.0",
+    "home_page": null,
+    "bundled_notices": []
+  },
+  {
+    "name": "tld",
+    "version": "0.13.2",
+    "license_metadata": "MPL-1.1 OR GPL-2.0-only OR LGPL-2.1-or-later",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/tld__tld-0.13.2.dist-info_licenses_LICENSE.rst",
+      "docs/licenses/tld__tld-0.13.2.dist-info_licenses_LICENSE_GPL2.0.txt",
+      "docs/licenses/tld__tld-0.13.2.dist-info_licenses_LICENSE_LGPL_2.1.txt",
+      "docs/licenses/tld__tld-0.13.2.dist-info_licenses_LICENSE_MPL_1.1.txt"
+    ]
+  },
+  {
+    "name": "tldextract",
+    "version": "5.4.0",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/tldextract__tldextract-5.4.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "toml",
+    "version": "0.10.2",
+    "license_metadata": "MIT License",
+    "home_page": "https://github.com/uiri/toml",
+    "bundled_notices": [
+      "docs/licenses/toml__toml-0.10.2.dist-info_LICENSE"
+    ]
+  },
+  {
+    "name": "trafilatura",
+    "version": "2.3.1",
+    "license_metadata": "Apache-2.0",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/trafilatura__trafilatura-2.3.1.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "typing-inspection",
+    "version": "0.4.4",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/typing-inspection__typing_inspection-0.4.4.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "typing_extensions",
+    "version": "4.16.0",
+    "license_metadata": "PSF-2.0",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/typing_extensions__typing_extensions-4.16.0.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "tzdata",
+    "version": "2026.5",
+    "license_metadata": "Apache-2.0",
+    "home_page": "https://github.com/python/tzdata",
+    "bundled_notices": [
+      "docs/licenses/tzdata__tzdata-2026.5.dist-info_licenses_LICENSE",
+      "docs/licenses/tzdata__tzdata-2026.5.dist-info_licenses_licenses_LICENSE_APACHE"
+    ]
+  },
+  {
+    "name": "tzlocal",
+    "version": "5.4.4",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/tzlocal__tzlocal-5.4.4.dist-info_licenses_LICENSE.txt"
+    ]
+  },
+  {
+    "name": "urllib3",
+    "version": "2.8.0",
+    "license_metadata": "MIT",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/urllib3__urllib3-2.8.0.dist-info_licenses_LICENSE.txt"
+    ]
+  },
+  {
+    "name": "uvicorn",
+    "version": "0.54.0",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/uvicorn__uvicorn-0.54.0.dist-info_licenses_LICENSE.md"
+    ]
+  },
+  {
+    "name": "watchdog",
+    "version": "6.0.0",
+    "license_metadata": "Apache Software License",
+    "home_page": "https://github.com/gorakhargosh/watchdog",
+    "bundled_notices": [
+      "docs/licenses/watchdog__watchdog-6.0.0.dist-info_COPYING",
+      "docs/licenses/watchdog__watchdog-6.0.0.dist-info_LICENSE"
+    ]
+  },
+  {
+    "name": "wcwidth",
+    "version": "0.9.2",
+    "license_metadata": "MIT License",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/wcwidth__wcwidth-0.9.2.dist-info_licenses_LICENSE"
+    ]
+  },
+  {
+    "name": "websockets",
+    "version": "17.2",
+    "license_metadata": "BSD-3-Clause",
+    "home_page": null,
+    "bundled_notices": [
+      "docs/licenses/websockets__websockets-17.2.dist-info_licenses_LICENSE"
+    ]
+  }
+]
