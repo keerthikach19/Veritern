@@ -38,4 +38,4 @@ Use `.venv-local\Scripts\python.exe` below on this Windows checkout. Source setu
 
 Enter Groq and the selected search provider key privately in `.env`; run the explicitly network-enabled live doctor. Supply/choose a reviewed discovery benchmark before asserting live coverage. Choose protected hosting and verified persistent storage before deployment. No billing, public evidence platform or remote database was activated.
 
-Implementation commit: `b9b4293`. Reliability, setup, packaging and CI commit: `2d5d512`. Documentation, license inventory and final handoff follow in a separate commit before the requested push.
+Implementation commit: `b9b4293`. Reliability, setup, packaging and CI commit: `2d5d512`. Documentation/license handoff commit: `7e18118`. These were pushed to https://github.com/keerthikach19/Veritern; `main` tracks `origin/main`. A final packaging-check fix uses fresh extraction directories, and the final wheel's bundled evaluator passed 30/30 again.

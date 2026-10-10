@@ -56,4 +56,4 @@ In this checkout:
 .\.venv-local\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1
 ```
 
-See README.md for installation, key setup and cross-platform commands. Use a fictional example first. The GitHub target is `https://github.com/keerthikach19/Veritern` with the local `main` branch tracking `origin/main` after the requested push.
+See README.md for installation, key setup and cross-platform commands. Use a fictional example first. The project is pushed to `https://github.com/keerthikach19/Veritern`, with local `main` tracking `origin/main`.

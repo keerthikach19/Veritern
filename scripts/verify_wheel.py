@@ -4,11 +4,12 @@ import subprocess
 import sys
 import zipfile
 from pathlib import Path
+from uuid import uuid4
 
 root = Path(__file__).resolve().parents[1]
 archive = root / "dist" / "veritern-0.1.0-py3-none-any.whl"
-destination = root / "dist" / "wheel-check"
-destination.mkdir(exist_ok=True)
+destination = root / "dist" / ("wheel-check-" + uuid4().hex[:8])
+destination.mkdir(exist_ok=False)
 with zipfile.ZipFile(archive) as wheel:
     for name in wheel.namelist():
         if not (destination / name).resolve().is_relative_to(destination.resolve()):
