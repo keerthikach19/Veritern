@@ -103,6 +103,7 @@ def validate_extraction(result: Extraction, case: Case):
             or source.kind == "snippet"
             or source.ocr_review_required
             or not source.scope_confirmed
+            or (source.kind == "private" and not source.consented)
         ):
             raise ValueError("Invalid source eligibility")
         quote = normalized(item.quote)

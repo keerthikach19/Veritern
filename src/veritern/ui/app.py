@@ -120,7 +120,6 @@ def home(settings, repo, runner):
                         settings,
                     )
                     st.rerun()
-    st.subheader("Explore a fictional case")
     if settings.enable_private_uploads and settings.app_mode != "demo":
         if st.button("Start with an offer letter or message"):
             activate(
@@ -137,6 +136,7 @@ def home(settings, repo, runner):
                 repo,
             )
             st.rerun()
+    st.subheader("Explore a fictional case")
     st.caption("Six ready-to-run examples. No API keys, live searches, or model calls.")
     selected = st.selectbox("Example", list(DEMOS), format_func=DEMOS.get)
     if st.button("Try a fictional example", type="secondary"):
@@ -279,7 +279,9 @@ def add_evidence(case, settings, repo, runner):
                 height=260,
                 max_chars=60000,
             )
-            scope = st.checkbox("This evidence concerns the selected company and program")
+            scope = st.checkbox(
+                "This evidence belongs to the company/program or document case being reviewed"
+            )
             critical = st.checkbox(
                 "I checked names, amounts, fee conditions and dates against the original",
                 disabled=False,
@@ -473,11 +475,13 @@ def main():
         st.stop()
     if "owner" not in st.session_state:
         st.session_state.owner = str(uuid4())
+    active_case = repo.get(st.session_state.get("case_id", ""), st.session_state.owner)
     with st.sidebar:
         st.title("◈ Veritern")
         st.caption("An evidence-first second look.")
         st.divider()
-        st.markdown(f"**{settings.app_mode.upper()} MODE**")
+        display_mode = active_case.mode if active_case else settings.app_mode
+        st.markdown(f"**{display_mode.upper()} MODE**")
         st.caption(
             f"Discovery: {settings.search_backend} · {'configured' if settings.search_ready else 'not configured'}"
         )
@@ -486,7 +490,7 @@ def main():
         )
         if settings.ephemeral_storage:
             st.warning("Ephemeral storage: saved cases may disappear after a host restart.")
-        if st.button("New investigation", width="stretch"):
+        if st.button("New investigation", width="stretch", disabled=runner.active):
             for key in ("case_id", "preview", "candidates"):
                 st.session_state.pop(key, None)
             st.rerun()

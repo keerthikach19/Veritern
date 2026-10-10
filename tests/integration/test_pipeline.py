@@ -109,3 +109,35 @@ async def test_cancel_before_call(settings):
     repo.cancel("job", case.owner)
     await runner.run("job", case.id, case.owner)
     assert len(repo.get(case.id, case.owner).assessments) == 1
+
+
+async def test_document_only_case_works_without_cloud_or_website(settings, monkeypatch):
+    from veritern.schemas import Source
+
+    async def forbidden(*args, **kwargs):
+        raise AssertionError("Document-only mode must not fetch a website")
+
+    monkeypatch.setattr("veritern.pipeline.runner.Fetcher.fetch", forbidden)
+    repo = Repository(settings.storage_dir)
+    case = Case(
+        owner="test",
+        original_input="Document-only review",
+        entity=Entity(name="Unverified offer", domain=""),
+        mode="manual",
+        sources=[
+            Source(
+                title="Letter",
+                text="Pay INR 50 for the certificate.",
+                kind="private",
+                scope_confirmed=True,
+                consented=False,
+            )
+        ],
+    )
+    repo.create(case)
+    runner = Runner(settings, repo)
+    repo.claim_job("job", case.id, case.owner)
+    await runner.run("job", case.id, case.owner)
+    result = repo.get(case.id, case.owner)
+    assert {f.rule_id for f in result.assessments[-1].findings} == {"LOCAL_FEE"}
+    assert result.budget_usage.calls == 0

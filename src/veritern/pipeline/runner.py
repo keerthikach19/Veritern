@@ -26,6 +26,7 @@ class Runner:
         self.repo.cleanup()
 
     def start(self, case: Case) -> str:
+        self.repo.cleanup()
         key = f"{case.id}:{case.revision}:pipeline-v1"
         if self.repo.job(key, case.owner):
             return key

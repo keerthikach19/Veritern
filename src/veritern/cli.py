@@ -70,6 +70,8 @@ def evaluate(split: str):
     from veritern.rules import assess
 
     root = Path(__file__).resolve().parents[2] / "fixtures" / "synthetic"
+    if not root.exists():
+        root = Path(__file__).resolve().parent / "data" / "synthetic"
     rows = sorted((root / split).glob("*.json"))
     passed = 0
     failures = []
